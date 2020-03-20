@@ -1,0 +1,3 @@
+User-agent*
+Disallow:
+Sitemap: file:///D:/test/index.html/sitemap.xml
