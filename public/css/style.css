@@ -347,3 +347,40 @@ footer a {
     color: #676464;
 
 }
+/* ------------------404----------------- */
+.main404{
+    position: relative;
+}
+.monstre{
+    position: absolute;
+bottom: 0;
+width: 63%;
+right: 150px;
+}
+.bloc404{
+    width: 40%;
+
+    position: absolute;
+    top: 150px;}
+.titre404{
+    color: black;
+    width: 100%;
+margin: 40px 0;
+font-size: 35px;
+}
+.text404{
+    text-align: center;
+    margin: 30px 0;
+    font-size: 25px;
+}
+.btn404{
+    border: 3px solid #b567d2;
+background: none;
+color: #b567d2;
+border-radius: 5px;
+margin: 0 40%;
+height: 50px;
+width: 25%;
+font-size: 15px;
+cursor: pointer;
+}
