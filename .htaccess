@@ -1,3 +1,9 @@
+Authname "Espace administration"
+Authtype Basic
+#AuthUserFile "c:\laragon\www\monBlog\admin\.htpasswd"
+#Require valid-user
+
+
 #redirection du site avec www vars sans www
 #RewriteEngine On
 #RewriteCond %{HTTP_HOST} ^monsite.com [NC]

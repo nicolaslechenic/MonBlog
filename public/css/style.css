@@ -14,6 +14,7 @@ header {
     height: 15%;
     display: flex;
     justify-content: space-around;
+    margin-bottom: 80px;
 
 }
 #menu-mobile {
@@ -46,10 +47,14 @@ header {
     margin-top: 10%;
     width: 100px;
 }
+.menu-mobile {
+    display: none;
+}
 /* ---------------------container---------------------- */
 .container {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin: 30px 0;
 }
@@ -208,7 +213,7 @@ aside {
 /* -----------Commentaires------------- */
 .blocCommentaire {
     width: 80%;
-    border: 3px solid pink;
+    border: 2px solid #E1B6B6;
     margin: 20px auto;
     padding: 10px;
     border-radius: 5px;
@@ -278,10 +283,10 @@ aside {
     text-align: justify;
 }
 /* ---------------------Contact------------------- */
-.containerTrois{
+.containerTrois {
     background: white;
-padding: 20px;
-border-radius: 5px;
+    padding: 20px;
+    border-radius: 5px;
 }
 .contact {
     width: 60%;
@@ -290,12 +295,12 @@ border-radius: 5px;
     flex-wrap: wrap;
     justify-content: center;
 }
-.ssTitre{
+.ssTitre {
     text-align: center;
-margin: 30px auto;
-font-size: 20px;
-width: 60%;
-color: #676464;
+    margin: 30px auto;
+    font-size: 20px;
+    width: 60%;
+    color: #676464;
 }
 .infosPerso {
     width: 100%;
@@ -308,22 +313,22 @@ color: #676464;
     width: 30%;
     height: 30px;
     border-radius: 5px;
-    border: 3px solid rgb(221, 136, 88);
+    border: 2px solid rgb(221, 136, 88);
     color: #676464;
     font-size: 18px;
 }
-.email{
+.email {
     width: 50%;
     height: 30px;
     border-radius: 5px;
-    border: 3px solid rgb(221, 136, 88);
+    border: 2px solid rgb(221, 136, 88);
     color: #676464;
     font-size: 18px;
 }
 #message {
     width: 90%;
     margin: 50px 0;
-    border: 3px solid rgb(221, 136, 88);
+    border: 2px solid rgb(221, 136, 88);
     border-radius: 5px;
     color: #676464;
     font-size: 18px;
@@ -352,39 +357,131 @@ footer a {
 
 }
 /* ------------------404----------------- */
-.main404{
+.main404 {
     position: relative;
 }
-.monstre{
+.monstre {
     position: absolute;
-bottom: 0;
-width: 63%;
-right: 150px;
+    bottom: 0;
+    width: 63%;
+    right: 150px;
 }
-.bloc404{
+.bloc404 {
     width: 40%;
 
     position: absolute;
-    top: 150px;}
-.titre404{
+    top: 150px;
+}
+.titre404 {
     color: black;
     width: 100%;
-margin: 40px 0;
-font-size: 35px;
+    margin: 40px 0;
+    font-size: 35px;
 }
-.text404{
+.text404 {
     text-align: center;
     margin: 30px 0;
     font-size: 25px;
 }
-.btn404{
-    border: 3px solid #b567d2;
-background: none;
-color: #b567d2;
+.btn404 {
+    border: 2px solid #b567d2;
+    background: none;
+    color: #b567d2;
+    border-radius: 5px;
+    margin: 0 40%;
+    height: 50px;
+    width: 25%;
+    font-size: 15px;
+    cursor: pointer;
+}
+/* -------------------admin------------------------- */
+.menu-principalAdmin {
+    width: 40%;
+}
+.titreAdmin {
+    width: 100%;
+}
+.formAdmin {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 50px 0;
+    font-size: 20px;
+    color: #666060;
+}
+.blocTitrePost {
+    width: 100%;
+    margin: 50px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.titrePost {
+    width: 30%;
+    height: 30px;
+    border-radius: 5px;
+    border: 2px solid rgb(221, 136, 88);
+    color: #676464;
+    font-size: 18px;
+}
+#refPage {
+    height: 30px;
+    border-radius: 5px;
+    border: 2px solid rgb(221, 136, 88);
+    color: #676464;
+    font-size: 18px;
+}
+.messagePost {
+    width: 100%;
+}
+.choixPage {
+    width: 100%;
+    margin: 30px 0;
+}
+.texteAdmin {
+    width: 100%;
+    height: 200px;
+}
+.btnAdmin {
+    width: 100%;
+    margin: 50px 0;
+    text-align: center;
+}
+.btnAdmin input {
+    width: 20%;
+    height: 40px;
+    border-radius: 5px;
+    background: rgb(221, 136, 88);
+    border: none;
+    color: white;
+    font-size: 20px;
+}
+/* --------------------post------------------ */
+.tableau{
+    width: 80%;
+}
+.tableau table{
+    width: 100%;
+    border: 2px solid #E1B6B6;
 border-radius: 5px;
-margin: 0 40%;
-height: 50px;
-width: 25%;
-font-size: 15px;
-cursor: pointer;
+padding: 10px;
+margin: 50px 0;
+color: #666060;
+font-size: 18px;
+}
+.hautTableau{
+    font-size: 24px;
+background: #E1B6B6;
+height: 40px;
+text-align: center;
+color: white;
+}
+td{
+    padding: 10px;
+}
+.material-icons{
+    font-size: 36px;
+text-align: center;
+width: 100%;
+color: #5353ba;
 }
