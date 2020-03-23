@@ -1,0 +1,116 @@
+@media screen and (max-width:576px) {
+    body {
+        max-width: 576px;
+    }
+    .logo {
+        display: none;
+    }
+    /*menu burger*/
+    .menu-principal {
+        position: relative;
+        text-align: center;
+        margin-top: 1%;
+    }
+    .menu-principal ul {
+        display: none;
+    }
+    .menu-principal ul li {
+        margin: 10px auto;
+        width: 200px;
+    }
+    .menu-principal .menu-mobile {
+        display: block;
+    }
+    .menu-principal .menu-mobile img {
+        cursor: pointer;
+
+    }
+    #menu-mobile:checked,
+    .menu-principal #menu-mobile:not(checked) {
+        position: absolute;
+        left: 9999px;
+        opacity: 0;
+        transition-duration: opacity 5s;
+
+    }
+    .menu-principal [type="checkbox"]:checked + label + ul {
+        display: block;
+        opacity: 1;
+
+    }
+    /* container  */
+    .main {
+        width: 100%;
+    }
+    .intro {
+        width: 100%;
+    }
+    aside {
+        display: none;
+    }
+    /* commentaire  */
+    .zoneText {
+        width: 100%;
+        text-align: center;
+    }
+    .showCommentaire {
+        width: 100%;
+    }
+    .contenuCom {
+        width: 100%;
+        margin: 15px;
+    }
+    /* footer */
+    footer {
+        font-size: 10px;
+    }
+    .soc-icons {
+        width: 20%;
+    }
+    /* articles */
+    .article {
+        width: 100%;
+    }
+    /* contact */
+    .containerTrois h1 {
+        margin: 50px 0;
+    }
+    .ssTitre {
+        width: 80%;
+    }
+    .infosPerso input {
+        width: 100%;
+        margin: 20px 0;
+    }
+    #message {
+        width: 100%;
+    }
+    .submitContact {
+        width: 40%;
+        height: 40px;
+    }
+}
+
+@media screen and (max-width:992px) {
+    /* header */
+    .menu-principal {
+        width: 80%;
+    }
+    .menu-mobile {
+        display: none;
+    }
+    /* container */
+    .intro {
+        width: 100%;
+    }
+    .intro h1 {
+        margin-bottom: 50px;
+    }
+    aside h4 {
+        margin-top: 50px;
+    }
+    /* articles */
+.article{
+    width: 45%;
+}
+}
