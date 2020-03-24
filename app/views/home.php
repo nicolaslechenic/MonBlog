@@ -1,62 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mon blog Austra-Zelandia</title>     
-        
-         <!-- réfèrencement -->
-         <meta name="keywords" content="accueil">
-         <meta
-             name="description"
-             content="Bienvenue sur mon blog Austra-Zelandia ! Venez partager avec moi mes étapes dans ce voyages !">
-         <!--feuilles de styles-->
-         <link rel="stylesheet" href="public/css/style.css">
-         <link rel="stylesheet" href="public/css/media.css">
-         <!-- google font -->
-         <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
-         <!-- script jquery -->
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    </head>
-    <body>
-        <header>
-            <div class="logo">
-                <img src="public/images/koala1.svg" alt="image svg">
-            </div>
-            <nav class="menu-principal">
-                <div class="menu">
-                    <input type="checkbox" id="menu-mobile" role="button">
-                    <label for="menu-mobile" class="menu-mobile">
-                        <img src="public/images/menu.svg">
-                    </label>
-                    <ul id="menuActive">
-                        <li class="nav">
-                            <a href="index.html">
-                                Accueil</a>
-                        </li>
-                        <li class="nav">
-                            <a href="australie.html">
-                                Australie</a>
-                        </li>
-                        <li class="nav">
-                            <a href="n-Zelande.html">
-                                Nouvelle-Zélande</a>
-                        </li>
-                        <li class="nav">
-                            <a href="Trucs.html">
-                                Trucs et astuces</a>
-                        </li>
-                        <li class="nav">
-                            <a href="contact.html">
-                                Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-
-        </header>
-
+<?php require 'app/views/templates/header.php'; ?>
         <div class="container">
             <section class="main">
             <article class="bloc-intro">
@@ -71,19 +14,19 @@
                 <div class="slider">
                     <ul id="slider-list">
                        <li>
-                           <img src="public/images/slider1/slide1.1.JPG">
+                           <img src="app/public/images/slider1/slide1.1.JPG">
                        </li>
                        <li>
-                        <img src="public/images/slider1/slide1.2.JPG">
+                        <img src="app/public/images/slider1/slide1.2.JPG">
                     </li>
                     <li>
-                        <img src="public/images/slider1/slide1.3.JPG">
+                        <img src="app/public/images/slider1/slide1.3.JPG">
                     </li>
                     <li>
-                        <img src="public/images/slider1/slide1.4.JPG">
+                        <img src="app/public/images/slider1/slide1.4.JPG">
                     </li>
                     <li>
-                        <img src="public/images/slider1/slide1.5.JPG">
+                        <img src="app/public/images/slider1/slide1.5.JPG">
                     </li>
                        
                     </ul>
@@ -96,19 +39,19 @@
                 <div class="slider slider2">
                     <ul id="slider-list">
                        <li>
-                           <img src="public/images/slider2/slide2.1.JPG">
+                           <img src="app/public/images/slider2/slide2.1.JPG">
                        </li>
                        <li>
-                        <img src="public/images/slider2/slide2.2.JPG">
+                        <img src="app/public/images/slider2/slide2.2.JPG">
                     </li>
                     <li>
-                        <img src="public/images/slider2/slide2.3.JPG">
+                        <img src="app/public/images/slider2/slide2.3.JPG">
                     </li>
                     <li>
-                        <img src="public/images/slider2/slide2.4.JPG">
+                        <img src="app/public/images/slider2/slide2.4.JPG">
                     </li>
                     <li>
-                        <img src="public/images/slider2/slide2.5.JPG">
+                        <img src="app/public/images/slider2/slide2.5.JPG">
                     </li>
                        
                     </ul>
@@ -182,27 +125,6 @@
 </div>
         </div>
     </div>
-
-        <footer>
-            <p>
-                &copy;2020 Monblog -
-                <a href="#">Tous droits réservés -
-                </a>
-            </p>
-            <p>
-                <a href="#">Site Map</a>
-            </p>
-            <div class="soc-icons">
-                <span>Me suivre:</span>
-                <a href="#"><img src="public/images/icon-1.jpg" alt="icon"></a>
-                <a href="#"><img src="public/images/icon-2.jpg" alt="icon"></a>
-                
-            </div>
-        </footer>
-<script src="public/js/active.js"></script>
-        <script>menuAct(0); </script>
-        <script src="public/js/creds.js"></script>
-        <script src="public/js/meteo.js"></script>
-
-    </body>
-</html>
+    
+    <?php require "app/views/templates/footer.php"; ?>
+    <script>menuAct(0); </script>
