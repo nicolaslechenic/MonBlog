@@ -1,0 +1,10 @@
+{
+    "name": "steph/mon-blog",
+    "authors": [
+        {
+            "name": "Stephanie Lemaitre",
+            "email": "stephanie.lemaitre56@gmail.com"
+        }
+    ],
+    "require": {}
+}
