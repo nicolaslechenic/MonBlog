@@ -8,7 +8,7 @@
 
 ### AUTEUR : 
 
-Stéphanie Lemaitre, éléve Kercode alias @Slemaitre
+Stéphanie Lemaitre, éléve Kercode alias @Slemaitre56
 
 ### ETAT DU PROJET : 
 
@@ -24,7 +24,7 @@ Sujet : Simple blog proposant :
 
 * Des onglets avec des articles sur l'Australie, Nouvelle-Zelande, les trucs et astuces pour voyager.
 
-* Un moyen de publier, supprimer les articles en mode admin en mode admin.
+* Un moyen de publier, supprimer les articles en mode admin.
 
               
               
