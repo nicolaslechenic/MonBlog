@@ -6,13 +6,15 @@
         <title>Mon blog Austra-Zelandia</title>     
         
          <!-- réfèrencement -->
-         <meta name="keywords" content="accueil">
+         <meta name="keywords" content="blog voyage">
          <meta
              name="description"
              content="Bienvenue sur mon blog Austra-Zelandia ! Venez partager avec moi mes étapes dans ce voyages !">
          <!--feuilles de styles-->
          <link rel="stylesheet" href="app/public/css/style.css">
          <link rel="stylesheet" href="app/public/css/media.css">
+         <!-- favicon -->
+         <link rel="icon" type="image/x-icon" href="app/public/favicon.ico"/>
          <!-- google font -->
          <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
          <!-- script jquery -->
@@ -32,23 +34,23 @@
                     </label>
                     <ul id="menuActive">
                         <li class="nav">
-                            <a href="index.php?index.php">
+                        <a href='?page=accueil'>
                                 Accueil</a>
                         </li>
                         <li class="nav">
-                            <a href="index.php?action=australie">
+                        <a href='?page=voyage1'>
                                 Australie</a>
                         </li>
                         <li class="nav">
-                            <a href="index.php?action=nouvelleZelande">
+                        <a href='?page=voyage2'>
                                 Nouvelle-Zélande</a>
                         </li>
                         <li class="nav">
-                            <a href="index.php?action=trucs">
+                        <a href='?page=voyage3'>
                                 Trucs et astuces</a>
                         </li>
                         <li class="nav">
-                            <a href="index.php?action=contact">
+                        <a href='?page=contact'>
                                 Contact</a>
                         </li>
                     </ul>

@@ -1,32 +1,37 @@
-<?php
 
-// important pour la sécurité de vos fichiers : les sessions
-// Démarre une session
-session_start();
-
-// autoloard.php généré avec Composer
-require_once __DIR__. "/vendor/autoload.php";
-
-
-// en cas d'erreurs
-try {
-    $controllerFront = new \Projet\controllers\ControllerFront();
-// isset = diferent de nul
-    if(isset($_GET["action"])){
-        if($_GET["action"] == "contact"){
-            $controllerFront->contactFront();
-        }elseif($_GET["action"] == "australie"){
-            $controllerFront->austraFront();
-        }elseif($_GET["action"] == "nouvelleZelande"){
-            $controllerFront->nZFront();
-        }elseif($_GET["action"] == "trucs"){
-            $controllerFront->trucsFront();
-        }
-
-
-    }else{
-        $controllerFront->home();
+    <?php
+// J'appele mes fichiers dans models
+    include 'app/models/dbConnection.php';
+    include 'app/models/CommentaireManager.php';
+    include 'app/models/Commentaire.php';
+    
+// Si différent de vide alors on appel la variable commentaire dans commentaireController.php
+// $_REQUEST = $_GET + $_POST + $_COOKIE par défaut
+    if (!empty($_REQUEST['create'])) {
+        if ($_REQUEST['create'] == 'commentaire')
+            include 'app/controllers/commentaireController.php';
     }
-} catch (Exception $e) {
-     require "app/views/404.php";
-} 
+
+    ?>
+</head>
+<body>
+<header>
+    <?php
+    include 'app/views/frontEnd/templates/header.php';
+    ?>
+</header>
+
+<article>
+    <?php
+    include 'app/controllers/pageController.php';
+    ?>
+</article>
+
+<footer>
+    <?php
+    include 'app/views/frontEnd/templates/footer.php';
+    ?>
+
+</footer>
+</body>
+</html>

@@ -15,7 +15,7 @@
             </div>
         </footer>
 <script src="app/public/js/active.js"></script>
-        
+      
         <script src="app/public/js/creds.js"></script>
         <script src="app/public/js/meteo.js"></script>
 

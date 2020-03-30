@@ -1,10 +1,16 @@
 {
-    "name": "steph/mon-blog",
+    "name": "steph/austra",
+    "description": "projet mvc de fin d'année",
     "authors": [
         {
-            "name": "Stephanie Lemaitre",
+            "name": "Stephanie lemaitre",
             "email": "stephanie.lemaitre56@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Projet\\" : "./app/"
+        }
+    },
     "require": {}
 }

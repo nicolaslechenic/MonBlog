@@ -14,7 +14,9 @@ header {
     height: 15%;
     display: flex;
     justify-content: space-around;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
+    
+
 
 }
 #menu-mobile {
@@ -168,6 +170,8 @@ h4 {
     border: 2px solid orange;
     color: orange;
     border-radius: 25px;
+    margin: 30px 0;
+    cursor: pointer;
 }
 #city {
     width: 90%;
@@ -262,11 +266,13 @@ aside {
 }
 .article {
     width: 30%;
+    height: 370px;
     padding: 10px;
     margin: 40px 0;
     box-shadow: 3px 3px 15px #666060;
     color: #676464;
     border-radius: 5px;
+    overflow: hidden;
 
 }
 .article .imgArticle {
@@ -278,9 +284,19 @@ aside {
     color: rgb(221, 136, 88);
     margin: 5px 0;
 }
-.extract {
+.articleDate {
     margin: 10px 0;
     text-align: justify;
+}
+.articleContent{
+    height: 75px;
+    margin: 10px 0;
+    text-align: justify;
+    overflow: hidden;
+}
+.savoir{
+    color: #7e7eda;
+text-decoration: none;
 }
 /* ---------------------Contact------------------- */
 .containerTrois {
@@ -457,31 +473,31 @@ footer a {
     font-size: 20px;
 }
 /* --------------------post------------------ */
-.tableau{
+.tableau {
     width: 80%;
 }
-.tableau table{
+.tableau table {
     width: 100%;
     border: 2px solid #E1B6B6;
-border-radius: 5px;
-padding: 10px;
-margin: 50px 0;
-color: #666060;
-font-size: 18px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 50px 0;
+    color: #666060;
+    font-size: 18px;
 }
-.hautTableau{
+.hautTableau {
     font-size: 24px;
-background: #E1B6B6;
-height: 40px;
-text-align: center;
-color: white;
+    background: #E1B6B6;
+    height: 40px;
+    text-align: center;
+    color: white;
 }
-td{
+td {
     padding: 10px;
 }
-.material-icons{
+.material-icons {
     font-size: 36px;
-text-align: center;
-width: 100%;
-color: #5353ba;
+    text-align: center;
+    width: 100%;
+    color: #5353ba;
 }

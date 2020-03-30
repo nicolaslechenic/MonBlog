@@ -69,7 +69,7 @@
     }
     /* articles */
     .article {
-        width: 100%;
+        min-width: 100%;
     }
     /* contact */
     .containerTrois h1 {
