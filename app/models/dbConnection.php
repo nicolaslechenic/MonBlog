@@ -3,7 +3,7 @@
 function openConnexion(){
     //  connexion à la bdd
     try {
-        $cheminConnexion = 'mysql:host=localhost;dbname=voyages';
+        $cheminConnexion = 'mysql:host=localhost;dbname=monblog';
         $login = 'root';
         $pwd = '';
         // Commande à exécuter lors de la connexion au serveur MySQL. Sera automatiquement ré-exécuté lors d'une reconnexion. 

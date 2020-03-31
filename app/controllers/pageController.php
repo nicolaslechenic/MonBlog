@@ -38,5 +38,11 @@ else {
         $commentairesList = CommentaireManager::readCommentaires($_REQUEST['page']);
         include 'app/views/frontEnd/commentaires/commentaireForm.php';
     }
+    if ($page != "page4" && "accueil") {
+        // :: = opérateur de résolution de portée = 
+        // permet d'appeler une classe static ou constant en dehors de celle-ci
+        $articlesList = ArticleManager::readArticles($_REQUEST['page']);
+        // include 'app/views/frontEnd/commentaires/articleForm.php';
+    }
 
 }

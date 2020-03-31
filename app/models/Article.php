@@ -1,21 +1,22 @@
 <?php
 
+class Article{
 
-class Commentaire
-{
     private $id;
-    private $userPseudo;
+    private $title;
+    private $content;
+    private $image;
     private $creationDate;
     private $updateDate;
-    private $content;
     private $refPage;
 
     //  fonction qui s'exécute automatiquement et qui permet d'exploiter les variables
-    public function __construct($userPseudo, $content, $refPage)
+    public function __construct($title, $content, $image, $refPage)
     {
 
-        $this->setUserPseudo($userPseudo);
+        $this->setTitle($title);
         $this->setContent($content);
+        $this->setContent($image);
         $this->setRefPage($refPage);
 
         $now = date_create();
@@ -38,17 +39,27 @@ class Commentaire
         return $this;
     }
 
-    public function getUserPseudo()
+    public function getTitle()
     {
-        return $this->userPseudo;
+        return $this->title;
     }
 
-    public function setUserPseudo($userPseudo)
+    public function setTitle($title)
     {
-        $this->userPseudo = $userPseudo;
+        $this->title = $title;
         return $this;
     }
 
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+        return $this;
+    }
     public function getCreationDate()
     {
         return $this->creationDate;
@@ -92,4 +103,5 @@ class Commentaire
         $this->refPage = $refPage;
         return $this;
     }
+
 }

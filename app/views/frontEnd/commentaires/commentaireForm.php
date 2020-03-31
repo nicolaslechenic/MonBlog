@@ -27,7 +27,7 @@
     <p class="com">Ecrit par : <?= $commentaire->getUserPseudo() ?></p>
     <p class="com">Daté du : <?= $commentaire->getCreationDate() ?></p>
     <p class="com">Commentaire : </p>
-    <p class="com"><?= $commentaire->getText() ?></p>
+    <p class="com"><?= $commentaire->getContent() ?></p>
 </div>
 
   <?php
