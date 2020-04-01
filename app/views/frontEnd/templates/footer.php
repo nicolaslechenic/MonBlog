@@ -7,6 +7,9 @@
             <p>
                 <a href="#">Site Map</a>
             </p>
+            <p>
+                <a href="app/views/backEnd/admin.php">Se connecter en administrateur</a>
+            </p>
             <div class="soc-icons">
                 <span>Me suivre:</span>
                 <a href="#"><img src="app/public/images/icon-1.jpg" alt="icon"></a>
