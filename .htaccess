@@ -1,6 +1,6 @@
 Authname "Espace administration"
 Authtype Basic
-#AuthUserFile "c:\laragon\www\monBlog\admin\.htpasswd"
+#AuthUserFile "c:\laragon\www\monBlog\views\backEnd\.htpasswd"
 #Require valid-user
 
 

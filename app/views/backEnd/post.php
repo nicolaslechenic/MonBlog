@@ -1,6 +1,4 @@
-<?php
-    include './templates/header.php';
-    ?>
+
 
         <div class="container">
             <h1 class="titreAdmin">Anciens Articles</h1>
@@ -27,7 +25,3 @@
                 </table>
             </div>
 
-
-            <?php
-    include './templates/footer.php';
-    ?>

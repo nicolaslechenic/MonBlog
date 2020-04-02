@@ -4,6 +4,8 @@
     include 'app/models/dbConnection.php';
     include 'app/models/CommentaireManager.php';
     include 'app/models/Commentaire.php';
+    include 'app/models/ArticleManager.php';
+    include 'app/models/Article.php';
     
 // Si différent de vide alors on appel la variable commentaire dans commentaireController.php
 // $_REQUEST = $_GET + $_POST + $_COOKIE par défaut

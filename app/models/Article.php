@@ -21,8 +21,8 @@ class Article{
 
         $now = date_create();
 
-        $this->setCreationDate($now->format('Y-m-d H:i:s'));
-        $this->setUpdateDate($now->format('Y-m-d H:i:s'));
+        $this->setCreationDate($now->format('Y-m-d'));
+        $this->setUpdateDate($now->format('Y-m-d'));
     }
 
     // Setters et getters

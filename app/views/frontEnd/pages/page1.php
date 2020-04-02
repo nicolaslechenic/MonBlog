@@ -1,81 +1,31 @@
 <div class="containerDeux">
     <section class="blocArticles">
+
+
+    <?php
+    if (!empty($articlesList)):
+        foreach ($articlesList as $article) :
+            ?>
         <article class="article">
             <a href="?page=article"><img
                 class="imgArticle"
-                src="app/public/images/australie1.jpg"
+                src="<?= $article->getImage() ?>"
                 alt="photo australie"></a>
-                <h5>Départ pour l'aventure !</h5>
-                <p class="articleDate">Daté du : 19/03/2020</p>
-                <p class="articleContent"> Valise faite avec un peu de tout et surtout: trop ! On a
-                    toujours peur de manquer ! On essaye de prevoir de quoi s'occuper car la route
-                    va être longue très longue ! fnaebk hhd dhhd  hdhhd hd  hdhhd hhhd hhhd hhhd hhhd hhhd 
-                    jfeb k jbedajef kjaej lj ajnae aegfbd aeiu dghjnl dijlnkzd ihj   ze pih  zeb     ihebd   
-                    fehebe ifueh  fbe zdfeaeddadaefae  </p>
-                    <a class="savoir" href="?page=article">En savoir +</a>
-                
+                <h5><?= $article->getTitle() ?></h5>
+                <p class="articleDate">Daté du : <?= $article->getCreationDate() ?></p>
+                <p class="articleContent"> <?= $article->getContent() ?></p>
+                    <a class="savoir" href="?page=article">En savoir +</a>              
 
             </article>
-            <article class="article">
-                <img
-                    class="imgArticle"
-                    src="app/public/images/australie1.jpg"
-                    alt="photo australie">
-                    <h5>Départ pour l'aventure !</h5>
-                    <p class="articleDate">Daté du : 19/03/2020</p>
-                    <p class="articleContent">Valise faite avec un peu de tout et surtout: trop ! On a
-                        toujours peur de manquer ! On essaye de prevoir de quoi s'occuper car la route
-                        va être longue très longue !</p>
-
-                </article>
-                <article class="article">
-                    <img
-                        class="imgArticle"
-                        src="app/public/images/australie1.jpg"
-                        alt="photo australie">
-                        <h5>Départ pour l'aventure !</h5>
-                        <p class="articleDate">Daté du : 19/03/2020</p>
-                        <p class="articleContent">Valise faite avec un peu de tout et surtout: trop ! On a
-                            toujours peur de manquer ! On essaye de prevoir de quoi s'occuper car la route
-                            va être longue très longue !</p>
-
-                    </article>
-                    <article class="article">
-                        <img
-                            class="imgArticle"
-                            src="app/public/images/australie1.jpg"
-                            alt="photo australie">
-                            <h5>Départ pour l'aventure !</h5>
-                            <p class="articleDate">Daté du : 19/03/2020</p>
-                            <p class="articleContent">Valise faite avec un peu de tout et surtout: trop ! On a
-                                toujours peur de manquer ! On essaye de prevoir de quoi s'occuper car la route
-                                va être longue très longue !</p>
-
-                        </article>
-                        <article class="article">
-                            <img
-                                class="imgArticle"
-                                src="app/public/images/australie1.jpg"
-                                alt="photo australie">
-                                <h5>Départ pour l'aventure !</h5>
-                                <p class="articleDate">Daté du : 19/03/2020</p>
-                                <p class="articleContent">Valise faite avec un peu de tout et surtout: trop ! On a
-                                    toujours peur de manquer ! On essaye de prevoir de quoi s'occuper car la route
-                                    va être longue très longue !</p>
-
-                            </article>
-                            <article class="article">
-                                <img
-                                    class="imgArticle"
-                                    src="app/public/images/australie1.jpg"
-                                    alt="photo australie">
-                                    <h5>Départ pour l'aventure !</h5>
-                                    <p class="articleDate">Daté du : 19/03/2020</p>
-                                    <p class="articleContent">Valise faite avec un peu de tout et surtout: trop ! On a
-                                        toujours peur de manquer ! On essaye de prevoir de quoi s'occuper car la route
-                                        va être longue très longue !</p>
-
-                                </article>
+            <?php
+        endforeach;
+    else:
+        ?>
+        <i>Aucun article n'a encore été publié</i>
+    <?php
+    endif;
+    ?>
+               
 
                             </section>
 

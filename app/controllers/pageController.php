@@ -8,14 +8,15 @@ if (empty($_REQUEST['page'])) {
 // Sinon on affiche les autres pages (voir ul header)
 else {
     $page = "";
+    $pageAdmin ="";
     switch ($_REQUEST['page']) {
-        case "Austalie":
+        case "Australie":
             $page = "page1";
             break;
         case "Nouvelle-zelande":
             $page = "page2";
             break;
-        case "Trucs et astuces":
+        case "Trucs_et_astuces":
             $page = "page3";
             break;
         case "contact":
@@ -25,33 +26,36 @@ else {
             $page = "article";
             break;
         case "admin":
-            $page = "admin";
+            $pageAdmin = "admin";
             break;
         case "post":
-            $page = "post";
+            $pageAdmin = "post";
             break;
         default:
             $page = 'accueil';
             break;
     }
 
-    include 'app/views/frontEnd/pages/' . $page . '.php';
+    if($page){
+        include 'app/views/frontEnd/pages/' . $page . '.php';
+    }else{
+        include 'app/views/backEnd/' . $pageAdmin . '.php';
+    }
+    
     
     // Condition pour afficher commentaireForm.php sur toutes les pages sauf sur la page 4
-    if ($page != "page4") {
+    if ($page != "page4" && $pageAdmin != "admin" && $pageAdmin !="post") {
         // :: = opérateur de résolution de portée = 
         // permet d'appeler une classe static ou constant en dehors de celle-ci
         $commentairesList = CommentaireManager::readCommentaires($_REQUEST['page']);
         include 'app/views/frontEnd/commentaires/commentaireForm.php';
     }
-    elseif ($page != "page4" && "accueil") {
+    elseif ($page != "page4" && $page !="accueil") {
         // :: = opérateur de résolution de portée = 
         // permet d'appeler une classe static ou constant en dehors de celle-ci
         $articlesList = ArticleManager::readArticles($_REQUEST['page']);
         // include 'app/views/frontEnd/commentaires/articleForm.php';
     }
-    elseif ($page = "admin" || "post") {
-      include 'app/views/backEnd/' . $page . '.php';  
-    }
+   
 
 }

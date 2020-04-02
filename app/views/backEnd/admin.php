@@ -1,6 +1,6 @@
-<?php
+<!-- <?php
     include './templates/header.php';
-    ?>
+    ?> -->
             
 
         <div class="container">
@@ -45,7 +45,7 @@
             </form>
 
         </div>
-        <?php
+        <!-- <?php
     include './templates/footer.php';
-    ?>
+    ?> -->
         

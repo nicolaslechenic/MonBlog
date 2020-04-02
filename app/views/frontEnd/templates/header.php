@@ -13,6 +13,7 @@
          <!--feuilles de styles-->
          <link rel="stylesheet" href="app/public/css/style.css">
          <link rel="stylesheet" href="app/public/css/media.css">
+         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
          <!-- favicon -->
          <link rel="icon" type="image/x-icon" href="app/public/favicon.ico"/>
          <!-- google font -->
@@ -33,26 +34,52 @@
                         <img src="app/public/images/menu.svg">
                     </label>
                     <ul id="menuActive">
+
+
+
+                    <!-- <?php                   
+                            // if() :
+                            ?> -->
+
+
+
                         <li class="nav">
                         <a href='?page=accueil'>
                                 Accueil</a>
                         </li>
                         <li class="nav">
-                        <a href='?page=voyage1'>
+                        <a href='?page=Australie'>
                                 Australie</a>
                         </li>
                         <li class="nav">
-                        <a href='?page=voyage2'>
+                        <a href='?page=Nouvelle-zelande'>
                                 Nouvelle-Zélande</a>
                         </li>
                         <li class="nav">
-                        <a href='?page=voyage3'>
+                        <a href='?page=Trucs_et_astuces'>
                                 Trucs et astuces</a>
                         </li>
                         <li class="nav">
                         <a href='?page=contact'>
                                 Contact</a>
                         </li>
+
+
+
+                        <!-- <?php                          
+                            //else :                         
+                            ?>
+                            <li class="nav">
+                            <a href='?page=admin'>
+                                Nouvel article</a>
+                        </li>
+                        <li class="nav">
+                        <a href='?page=post'>
+                                Anciens Articles</a>
+                        </li>
+                        <?php                      
+                           // endif                       
+                            ?> -->
                     </ul>
                 </div>
             </nav>
