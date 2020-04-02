@@ -16,7 +16,7 @@ class Article{
 
         $this->setTitle($title);
         $this->setContent($content);
-        $this->setContent($image);
+        $this->setImage($image);
         $this->setRefPage($refPage);
 
         $now = date_create();

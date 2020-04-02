@@ -33,10 +33,10 @@ class ArticleManager
         // Pour lire un article dans la bdd
         $db = openConnexion();
         // Après avoir tout sélectionné selectionné dans la table article
-        // On le stoocke dans un tableau
+        // On le stoocke dans un tableau 
         $articlesList = [];
 
-        $request = "SELECT * FROM article WHERE ref_page like'" . $pageName . "';" ;
+        $request = "SELECT * FROM article WHERE ref_page like '" . $pageName . "';" ;
 
         // On prépare et exécute la requête
         $stmt = $db->prepare($request);

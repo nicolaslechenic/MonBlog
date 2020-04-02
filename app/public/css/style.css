@@ -14,10 +14,6 @@ header {
     height: 15%;
     display: flex;
     justify-content: space-around;
-    margin-bottom: 50px;
-    
-
-
 }
 #menu-mobile {
     display: none;

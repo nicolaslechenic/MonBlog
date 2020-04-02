@@ -35,14 +35,6 @@
                     </label>
                     <ul id="menuActive">
 
-
-
-                    <!-- <?php                   
-                            // if() :
-                            ?> -->
-
-
-
                         <li class="nav">
                         <a href='?page=accueil'>
                                 Accueil</a>
@@ -64,22 +56,6 @@
                                 Contact</a>
                         </li>
 
-
-
-                        <!-- <?php                          
-                            //else :                         
-                            ?>
-                            <li class="nav">
-                            <a href='?page=admin'>
-                                Nouvel article</a>
-                        </li>
-                        <li class="nav">
-                        <a href='?page=post'>
-                                Anciens Articles</a>
-                        </li>
-                        <?php                      
-                           // endif                       
-                            ?> -->
                     </ul>
                 </div>
             </nav>
