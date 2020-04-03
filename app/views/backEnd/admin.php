@@ -5,22 +5,26 @@
 
         <div class="container">
             <h1 class="titreAdmin">Nouvel article</h1>
-            <form class="formAdmin" action="">
+            <form class="formAdmin" action="" method="post" accept-charset="utf-8">
                 <div class="blocTitrePost">
 
                     <input
                         class="titrePost"
                         type="text"
-                        name="titre"
+                        name="title"
                         placeholder="Titre de l'article*">
+
                     <div class="file">
+
                         <label for="file">
                             Insérer une image</label>
-                        <input type="file" name="file">
+                        <input type="file" name="image">
+
                     </div>
                 </div>
                 <div class="messagePost">
                     <div class="choixPage">
+
                         <label for="refPage">Choisir la page :</label>
 
                         <select id="refPage">
@@ -33,7 +37,7 @@
                     <div class="">
                         <textarea
                             class="texteAdmin"
-                            name="contenu"
+                            name="content"
                             placeholder="Veuillez écrire le contenu de l'article *"></textarea>
                     </div>
                 </div>

@@ -16,7 +16,7 @@
     include 'app/models/ArticleManager.php';
     include 'app/models/Article.php';
     
-// Si différent de vide alors on appel la variable commentaire dans commentaireController.php
+// Si différent de vide alors on appele la variable commentaire dans commentaireController.php
 // $_REQUEST = $_GET + $_POST + $_COOKIE par défaut
     if (!empty($_REQUEST['create'])) {
         if ($_REQUEST['create'] == 'commentaire') {
@@ -24,18 +24,18 @@
         }
     }
 
-    if (!isset($_REQUEST['page']) && $_REQUEST['page'] !== 'admin') {
+    // if (!isset($_REQUEST['page']) && $_REQUEST['page'] !== 'admin') {
            // if(!isAdmin()){
             //    $_REQUEST['page'] = $_REQUEST['login'];
            // }
-    }
+    // }
 
     ?>
 </head>
 <body>
 <header>
     <?php
-    if (!isset($_REQUEST['page']) || $_REQUEST['page'] !== 'admin') {
+    if (!isset($_REQUEST['page']) || $_REQUEST['page'] !== 'admin'&& $_REQUEST['page'] !== 'post') {
         include 'app/views/frontEnd/templates/header.php';
     } else {
         include 'app/views/backEnd/templates/header.php';
@@ -51,8 +51,10 @@
 
 <footer>
     <?php
-    if (!isset($_REQUEST['page']) || $_REQUEST['page'] !== 'admin') {
+    if (!isset($_REQUEST['page']) || $_REQUEST['page'] !== 'admin' && $_REQUEST['page'] !== 'post') {
         include 'app/views/frontEnd/templates/footer.php';
+    } else {
+        include 'app/views/backEnd/templates/footer.php';
     }
     ?>
 

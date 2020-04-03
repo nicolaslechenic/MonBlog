@@ -8,7 +8,7 @@ if (empty($_REQUEST['page'])) {
 // Sinon on affiche les autres pages (voir ul header)
 else {
     $page = "";
-    $pageAdmin ="";
+    $pageAdmin = "";
     switch ($_REQUEST['page']) {
         case "Australie":
             $page = "page1";
@@ -37,15 +37,17 @@ else {
     }
 
 // Condition pour afficher commentaireForm.php sur toutes les pages
-    if ($page != "page4") {
-        if ($page !="accueil") {
+    if ($page != "page4" && $page != "accueil") {
+        if ($pageAdmin != "admin" && $pageAdmin != "post") {
             // :: = opérateur de résolution de portée =
             // permet d'appeler une classe static ou constant en dehors de celle-ci
             $articlesList = ArticleManager::readArticles($_REQUEST['page']);
             include 'app/views/frontEnd/articles/articles.php';
+        }elseif($pageAdmin != "admin"){
+            $articlesAllList = ArticleManager::readAllArticles($_REQUEST['page']);     
         }
         
-        if ($pageAdmin != "admin" && $pageAdmin !="post") {          
+        if ($pageAdmin != "admin" && $pageAdmin != "post") {          
             $commentairesList = CommentaireManager::readCommentaires($_REQUEST['page']);
             include 'app/views/frontEnd/commentaires/commentaireForm.php';
         }

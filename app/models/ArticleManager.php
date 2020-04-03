@@ -58,6 +58,36 @@ class ArticleManager
         return $articlesList;
     }
 
+    static function readAllArticles($pageName): array
+    {
+        // Pour lire les articles dans la bdd
+        $db = openConnexion();
+        // Après avoir tout sélectionné selectionné dans la table article
+        // On le stoocke dans un tableau 
+        $articlesAllList = [];
+
+        $request = "SELECT * FROM article" ;
+
+        // On prépare et exécute la requête
+        $stmt = $db->prepare($request);
+        $stmt->execute();
+
+
+        while ($articlesFromDb = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // On instancie Commenataire
+            $articleAll = new Article($articlesFromDb['title'],$articlesFromDb['content'],$articlesFromDb['image'],$articlesFromDb['ref_page']);
+            $articleAll->setId($articlesFromDb['id']);
+            $articleAll->setCreationDate($articlesFromDb['creation_date']);
+            $articleAll->setUpdateDate($articlesFromDb['update_date']);
+
+            $articlesAllList [] = $articleAll;
+        }
+
+        $db = closeConnexion();
+
+        return $articlesAllList;
+    }
+
     static function updateArticle(Article $article): Article
     {
         // Pour modifier un commenaitre
