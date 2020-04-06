@@ -46,18 +46,18 @@ else {
         }elseif($pageAdmin != "admin"){
             $articlesAllList = ArticleManager::readAllArticles($_REQUEST['page']);     
         }
-        
-        if ($pageAdmin != "admin" && $pageAdmin != "post") {          
-            $commentairesList = CommentaireManager::readCommentaires($_REQUEST['page']);
-            include 'app/views/frontEnd/commentaires/commentaireForm.php';
-        }
-        
+    }    
+    if ($page != "page4" && $pageAdmin != "admin" && $pageAdmin != "post") {          
+        $commentairesList = CommentaireManager::readCommentaires($_REQUEST['page']);
+        include 'app/views/frontEnd/commentaires/commentaireForm.php';
     }
+        
+    
 
     if($page){
         include 'app/views/frontEnd/pages/' . $page . '.php';
     }else{
-        include 'app/views/backEnd/' . $pageAdmin . '.php';
+        include 'app/views/backOffice/' . $pageAdmin . '.php';
     }
 
 }

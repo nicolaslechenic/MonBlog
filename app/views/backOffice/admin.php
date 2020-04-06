@@ -12,37 +12,43 @@
                         class="titrePost"
                         type="text"
                         name="title"
-                        placeholder="Titre de l'article*">
+                        placeholder="Titre de l'article*"
+                        required>
 
                     <div class="file">
 
                         <label for="file">
                             Insérer une image</label>
-                        <input type="file" name="image">
+                        <input type="file" name="image" required>
 
                     </div>
                 </div>
                 <div class="messagePost">
                     <div class="choixPage">
 
-                        <label for="refPage">Choisir la page :</label>
+                        <label for="ref_page">Choisir la page :</label>
 
-                        <select id="refPage">
-                            <option value="australie">Australie</option>
-                            <option value="nouvelle-zelande">Nouvelle-Zélande</option>
-                            <option value="Trucs">Trucs et Astuces</option>
-
+                        <?php if(isset($_REQUEST['page']) ) : ?>
+                        <select name="ref_page" id="refPage" required>
+                        
+                            <option value="Australie">Australie</option>
+                            <option value="Nouvelle-zelande">Nouvelle-Zélande</option>
+                            <option value="Trucs_et_astuces">Trucs et Astuces</option>
+                        
                         </select>
+                       <?php endif ?> 
                     </div>
+
                     <div class="">
                         <textarea
                             class="texteAdmin"
                             name="content"
-                            placeholder="Veuillez écrire le contenu de l'article *"></textarea>
+                            placeholder="Veuillez écrire le contenu de l'article *" required ></textarea>
                     </div>
                 </div>
                 <div class="btnAdmin">
-
+                
+                <input type=hidden name="createArticle" value="article"/>
                     <input type="submit" value="Poster!">
 
                 </div>

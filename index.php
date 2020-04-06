@@ -9,7 +9,7 @@
     <meta name="author" content="Stéphanie Lemaitre">
     <meta name="robots" content="nofollow">
     <?php
-// J'appele mes fichiers dans models
+// J'appelle mes fichiers dans models
     include 'app/models/dbConnection.php';
     include 'app/models/CommentaireManager.php';
     include 'app/models/Commentaire.php';
@@ -23,7 +23,11 @@
             include 'app/controllers/commentaireController.php';
         }
     }
-
+    if (!empty($_REQUEST['createArticle'])) {
+        if ($_REQUEST['createArticle'] == 'article') {
+            include 'app/controllers/articleController.php';
+        }
+    }
     // if (!isset($_REQUEST['page']) && $_REQUEST['page'] !== 'admin') {
            // if(!isAdmin()){
             //    $_REQUEST['page'] = $_REQUEST['login'];
@@ -38,7 +42,7 @@
     if (!isset($_REQUEST['page']) || $_REQUEST['page'] !== 'admin'&& $_REQUEST['page'] !== 'post') {
         include 'app/views/frontEnd/templates/header.php';
     } else {
-        include 'app/views/backEnd/templates/header.php';
+        include 'app/views/backOffice/templates/header.php';
     }
     ?>
 </header>
@@ -54,7 +58,7 @@
     if (!isset($_REQUEST['page']) || $_REQUEST['page'] !== 'admin' && $_REQUEST['page'] !== 'post') {
         include 'app/views/frontEnd/templates/footer.php';
     } else {
-        include 'app/views/backEnd/templates/footer.php';
+        include 'app/views/backOffice/templates/footer.php';
     }
     ?>
 

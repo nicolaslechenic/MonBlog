@@ -1,8 +1,9 @@
+<FilesMatch "admin.php">
 Authname "Espace administration"
 Authtype Basic
-#AuthUserFile "c:\laragon\www\monBlog\views\backEnd\.htpasswd"
-#Require valid-user
-
+AuthUserFile "c:\laragon\www\monBlog\views\backOffice\.htpasswd"
+Require valid-user
+</FilesMatch>
 
 #redirection du site avec www vars sans www
 #RewriteEngine On
