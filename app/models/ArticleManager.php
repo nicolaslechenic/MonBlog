@@ -3,7 +3,7 @@
 
 class ArticleManager
 {
-    // fonction appelée dans commenataireController.php
+    // fonction appelée dans commentaireController.php
     static function createArticle(Article $article): Article
     {
         // Pour créer un article
@@ -12,8 +12,8 @@ class ArticleManager
         // On insére dans la table article
         $request = "INSERT INTO article (title, image, creation_date, update_date, content, ref_page) VALUES ";
 
-         // Getter est une méthode chargée de renvoyer la valeur d'un attribut ex: getTitle voir article.php
-        $request .= "( '" . $article->getTitle() . "', '" . $article->getImage() . "','" . $article->getCreationDate() . "', '" . $article->getUpdateDate() . "', '" . $article->getContent() . "', '" . $article->getRefPage() . "');";
+        // Getter est une méthode chargée de renvoyer la valeur d'un attribut ex: getTitle voir article.php
+        $request .= '( "' . $article->getTitle() . '", "' . $article->getImage() . '","' . $article->getCreationDate() . '", "' . $article->getUpdateDate() . '", "' . $article->getContent() . '", "' . $article->getRefPage() . '");';
         // On prépare et exécute la requête
         $stmt = $db->prepare($request);
         $stmt->execute();

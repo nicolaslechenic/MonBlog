@@ -13,7 +13,7 @@ class CommentaireManager
         $request = "INSERT INTO commentaire (user_pseudo, creation_date, update_date, content, ref_page) VALUES ";
 
          // Getter est une méthode chargée de renvoyer la valeur d'un attribut ex: getUserPseudo voir Commentaire.php
-        $request .= "( '" . $commentaire->getUserPseudo() . "', '" . $commentaire->getCreationDate() . "', '" . $commentaire->getUpdateDate() . "', '" . $commentaire->getContent() . "', '" . $commentaire->getRefPage() . "');";
+        $request .= '( "' . $commentaire->getUserPseudo() . '", "' . $commentaire->getCreationDate() . '", "' . $commentaire->getUpdateDate() . '", "' . $commentaire->getContent() . '", "' . $commentaire->getRefPage() . '");';
         // On prépare et exécute la requête
         $stmt = $db->prepare($request);
         $stmt->execute();
