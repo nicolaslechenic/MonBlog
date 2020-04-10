@@ -497,3 +497,28 @@ td {
     width: 100%;
     color: #5353ba;
 }
+/* -----------------------article------------------------------- */
+.oneArticle{
+width: 70%;
+margin: auto;
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+}
+.titreOneArticle{
+    width: 100%;
+    margin: 50px auto;
+}
+
+.imageOneArticle{
+    width: 100%;
+    margin: 30px auto;
+    display: flex;  
+}
+.contentOneArticle{
+    width: 100%;
+    color: #666060;
+    text-align: justify;
+    margin: 20px 0;
+    font-size: 18px;
+}

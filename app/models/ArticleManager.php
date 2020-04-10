@@ -67,22 +67,21 @@ class ArticleManager
         // On le stoocke dans un tableau 
         $articlesList = [];
 
-        $request = "SELECT * FROM article WHERE id";
+        $request = "SELECT * FROM article WHERE id=:id";
 
         // On prépare et exécute la requête
         $stmt = $db->prepare($request);
-        $stmt->execute();
-
-
-        while ($articlesFromDb = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            // On instancie article
-            $article = new Article($articlesFromDb['title'],$articlesFromDb['content'],$articlesFromDb['image'],$articlesFromDb['ref_page']);
-            $article->setId($articlesFromDb['id']);
-            $article->setCreationDate($articlesFromDb['creation_date']);
-            $article->setUpdateDate($articlesFromDb['update_date']);
+        $params= array("id"=>$_GET['id']);
+        $stmt->execute($params);
+        $articleFromDb = $stmt->fetch();
+       // On instancie article
+            $article = new Article($articleFromDb['title'],$articleFromDb['content'],$articleFromDb['image'],$articleFromDb['ref_page']);
+            $article->setId($articleFromDb['id']);
+            $article->setCreationDate($articleFromDb['creation_date']);
+            $article->setUpdateDate($articleFromDb['update_date']);
 
             $articlesList [] = $article;
-        }
+        
 
         $db = closeConnexion();
 
@@ -125,8 +124,8 @@ class ArticleManager
         $db = openConnexion();
         $request = "UPDATE article SET ";
          // Getter est une méthode chargée de renvoyer la valeur d'un attribut ex: getTitle voir article.php
-        $request .= "title ='" . $article->getTitle() . "content ='" . $article->getContent() . "', ' update_date" . $article->getUpdateDate() . "');";
-        $request .= "WHERE id ='" . $article->getId() . "');";
+        $request .= "title ='" . $article->getTitle() . "content ='" . $article->getContent() . "', ' update_date" . $article->getUpdateDate() . "';";
+        $request .= "WHERE id ='" . $article->getId() . "';";
         // On prépare et exécute la requête
         $stmt = $db->prepare($request);
         $stmt->execute();

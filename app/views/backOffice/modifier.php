@@ -6,9 +6,7 @@
             <form class="formAdmin" action="" method="post" accept-charset="utf-8">
             <?php
             
-    
-        foreach ($articlesList as $article) :
-            var_dump($article->getId());
+        foreach ($articlesList as $article) :        
             ?>
                 <div class="blocTitrePost">
 
@@ -33,7 +31,8 @@
 
                         <label for="ref_page">Choisir la page :</label>
 
-                        <?php if(isset($_REQUEST['page']) ) : ?>
+                        <?php 
+                        if(isset($_REQUEST['page']) ) : ?>
                         <select name="ref_page" id="refPage" required>
                         
                             <option value="Australie">Australie</option>

@@ -52,18 +52,17 @@ else {
             $articlesAllList = ArticleManager::readAllArticles($_REQUEST['page']);     
         }
     }
-    if( $pageAdmin == "modifier"){
-        $articlesList = ArticleManager::readOneArticle($_REQUEST['page']);
+    if( $pageAdmin == "modifier"  ){
+        $articlesList = ArticleManager::readOneArticle();
+    }elseif($page == "article"){
+        $articlesList = ArticleManager::readOneArticle();
+        include 'app/views/frontEnd/pages/articleForm.php';
     }
 // Condition pour afficher les commentaires sur les pages        
     if ($page != "accueil" && $pageAdmin != "admin" && $pageAdmin != "post" && $pageAdmin != "modifier" ) {          
         $commentairesList = CommentaireManager::readCommentaires($_REQUEST['page']);
         include 'app/views/frontEnd/commentaires/commentaireForm.php';
     }
-
-
-        
-    
 
     if($page){
         include 'app/views/frontEnd/pages/' . $page . '.php';
