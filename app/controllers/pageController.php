@@ -31,26 +31,37 @@ else {
         case "post":
             $pageAdmin = "post";
             break;
+        case "modifier":
+            $pageAdmin = "modifier";
+            break;
         default:
             $page = 'accueil';
             break;
     }
 
-// Condition pour afficher commentaireForm.php sur toutes les pages
-    if ($page != "page4" && $page != "accueil") {
-        if ($pageAdmin != "admin" && $pageAdmin != "post") {
+// Condition pour afficher les articles les pages
+    if ($page != "page4" && $page != "accueil" && $pageAdmin != "admin" && $pageAdmin != "modifier") {
+        if ($pageAdmin != "post" && $page != "article") {
             // :: = opérateur de résolution de portée =
             // permet d'appeler une classe static ou constant en dehors de celle-ci
             $articlesList = ArticleManager::readArticles($_REQUEST['page']);
             include 'app/views/frontEnd/articles/articles.php';
-        }elseif($pageAdmin != "admin"){
+        }elseif($page == "article" && $pageAdmin =="post"){
+            $articlesList = ArticleManager::readArticles($_REQUEST['page']);     
+        }else{
             $articlesAllList = ArticleManager::readAllArticles($_REQUEST['page']);     
         }
-    }    
-    if ($page != "page4" && $pageAdmin != "admin" && $pageAdmin != "post") {          
+    }
+    if( $pageAdmin == "modifier"){
+        $articlesList = ArticleManager::readOneArticle($_REQUEST['page']);
+    }
+// Condition pour afficher les commentaires sur les pages        
+    if ($page != "accueil" && $pageAdmin != "admin" && $pageAdmin != "post" && $pageAdmin != "modifier" ) {          
         $commentairesList = CommentaireManager::readCommentaires($_REQUEST['page']);
         include 'app/views/frontEnd/commentaires/commentaireForm.php';
     }
+
+
         
     
 

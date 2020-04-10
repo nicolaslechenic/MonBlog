@@ -28,6 +28,11 @@
             include 'app/controllers/articleController.php';
         }
     }
+    if (!empty($_REQUEST['updateArticle'])) {
+        if ($_REQUEST['updateArticle'] == 'article') {
+            include 'app/controllers/articleController.php';
+        }
+    }
     // if (!isset($_REQUEST['page']) && $_REQUEST['page'] !== 'admin') {
            // if(!isAdmin()){
             //    $_REQUEST['page'] = $_REQUEST['login'];
@@ -36,26 +41,29 @@
 
     ?>
 </head>
-<body>
+<!-- On crée notre modéle de page qui sera rappellé a chaque $_REQUEST -->
 <header>
     <?php
-    if (!isset($_REQUEST['page']) || $_REQUEST['page'] !== 'admin'&& $_REQUEST['page'] !== 'post') {
+    // j'appelle un header different pour frontEnd et backOffice
+    if (!isset($_REQUEST['page']) || $_REQUEST['page'] !== 'admin'&& $_REQUEST['page'] !== 'post' && $_REQUEST['page'] !== 'modifier') {
         include 'app/views/frontEnd/templates/header.php';
     } else {
         include 'app/views/backOffice/templates/header.php';
     }
     ?>
 </header>
-
+<body>
+    <!-- le body sera controllé par le controller pageController -->
 <article>
     <?php
     include 'app/controllers/pageController.php';
     ?>
 </article>
-
+</body>
 <footer>
     <?php
-    if (!isset($_REQUEST['page']) || $_REQUEST['page'] !== 'admin' && $_REQUEST['page'] !== 'post') {
+    // j'appelle un header different pour frontEnd et backOffice
+    if (!isset($_REQUEST['page']) || $_REQUEST['page'] !== 'admin' && $_REQUEST['page'] !== 'post' && $_REQUEST['page'] !== 'modifier') {
         include 'app/views/frontEnd/templates/footer.php';
     } else {
         include 'app/views/backOffice/templates/footer.php';
@@ -63,5 +71,5 @@
     ?>
 
 </footer>
-</body>
+
 </html>

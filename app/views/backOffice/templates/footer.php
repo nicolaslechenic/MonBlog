@@ -8,7 +8,7 @@
                 <a href="#">Site Map</a>
             </p>
             <p>
-                <a href='?page=admin'>Se déconnecter en administrateur</a>
+                <a href='?page=accueil'>Se déconnecter en administrateur</a>
             </p>
             <div class="soc-icons">
                 <span>Me suivre:</span>

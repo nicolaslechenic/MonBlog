@@ -1,21 +1,19 @@
 <div class="containerDeux">
     <section class="blocArticles">
 
-
     <?php
     if (!empty($articlesList)):
         foreach ($articlesList as $article) :
-
             ?>
         <article class="article">
-            <a href="?page=article"><img
+        <a href="?page=article&id=<?= $article->getId(); ?>"><img
                 class="imgArticle"
                 src="app/public/images/<?= $article->getImage() ?>"
                 ></a>
                 <h5><?= $article->getTitle() ?></h5>
                 <p class="articleDate">Daté du : <?= $article->getCreationDate() ?></p>
                 <p class="articleContent"> <?= $article->getContent() ?></p>
-                <a class="savoir" href="?page=article">En savoir +</a>              
+                <a href="?page=article&id=<?= $article->getId(); ?>">En savoir +</a>              
 
         </article>
     <?php

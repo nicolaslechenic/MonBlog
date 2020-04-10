@@ -34,7 +34,7 @@
                         <img src="app/public/images/menu.svg">
                     </label>
                     <ul id="menuActive">
-
+                        <!-- On rappelle le ref_Page de pageController -->
                         <li class="nav">
                         <a href='?page=accueil'>
                                 Accueil</a>

@@ -58,11 +58,42 @@ class ArticleManager
         return $articlesList;
     }
 
-    static function readAllArticles($pageName): array
+    static function readOneArticle()
+
+    {
+        // Pour lire un article dans la bdd
+        $db = openConnexion();
+        // Après avoir tout sélectionné selectionné dans la table article
+        // On le stoocke dans un tableau 
+        $articlesList = [];
+
+        $request = "SELECT * FROM article WHERE id";
+
+        // On prépare et exécute la requête
+        $stmt = $db->prepare($request);
+        $stmt->execute();
+
+
+        while ($articlesFromDb = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // On instancie article
+            $article = new Article($articlesFromDb['title'],$articlesFromDb['content'],$articlesFromDb['image'],$articlesFromDb['ref_page']);
+            $article->setId($articlesFromDb['id']);
+            $article->setCreationDate($articlesFromDb['creation_date']);
+            $article->setUpdateDate($articlesFromDb['update_date']);
+
+            $articlesList [] = $article;
+        }
+
+        $db = closeConnexion();
+
+        return $articlesList;
+    }
+
+    static function readAllArticles(): array
     {
         // Pour lire les articles dans la bdd
         $db = openConnexion();
-        // Après avoir tout sélectionné selectionné dans la table article
+        // Après avoir tout sélectionné dans la table article
         // On le stoocke dans un tableau 
         $articlesAllList = [];
 
@@ -74,7 +105,7 @@ class ArticleManager
 
 
         while ($articlesFromDb = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            // On instancie Commenataire
+            // On instancie Commentaire
             $articleAll = new Article($articlesFromDb['title'],$articlesFromDb['content'],$articlesFromDb['image'],$articlesFromDb['ref_page']);
             $articleAll->setId($articlesFromDb['id']);
             $articleAll->setCreationDate($articlesFromDb['creation_date']);
@@ -90,7 +121,7 @@ class ArticleManager
 
     static function updateArticle(Article $article): Article
     {
-        // Pour modifier un commenaitre
+        // Pour modifier un commentaire
         $db = openConnexion();
         $request = "UPDATE article SET ";
          // Getter est une méthode chargée de renvoyer la valeur d'un attribut ex: getTitle voir article.php

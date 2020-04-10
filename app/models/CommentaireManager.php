@@ -28,7 +28,7 @@ class CommentaireManager
 
 
     // Fonction appelée dans pageController.php
-    static function readCommentaires($pageName): array
+    static function readCommentaires(string $pageName): array
     {
         // Pour lire un commentaire dans la bdd
         $db = openConnexion();

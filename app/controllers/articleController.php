@@ -8,3 +8,6 @@ $article = new Article($_REQUEST['title'],$_REQUEST['content'],$_REQUEST['image'
 
 // on appele la fonction createCommentaire dans la classe CommentaireManager
 ArticleManager::createArticle($article);
+
+// ArticleManager::updateArticle($article);
+

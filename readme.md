@@ -43,9 +43,6 @@ Usage classique et simple.
               
 Utilisation de code climate
 
-### LICENCE : 
-
-aucune
 
 ### VERSION : 
 

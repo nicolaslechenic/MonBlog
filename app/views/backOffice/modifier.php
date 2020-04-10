@@ -2,8 +2,14 @@
             
 
         <div class="container">
-            <h1 class="titreAdmin">Nouvel article</h1>
+            <h1 class="titreAdmin">Modifier article</h1>
             <form class="formAdmin" action="" method="post" accept-charset="utf-8">
+            <?php
+            
+    
+        foreach ($articlesList as $article) :
+            var_dump($article->getId());
+            ?>
                 <div class="blocTitrePost">
 
                     <input
@@ -11,13 +17,14 @@
                         type="text"
                         name="title"
                         placeholder="Titre de l'article*"
+                        value="<?= $article->getTitle() ?>"
                         required>
 
                     <div class="file">
 
                         <label for="file">
                             Insérer une image</label>
-                        <input type="file" name="image" required>
+                        <input type="file" name="image" value="<?= $article->getImage(); ?>" required>
 
                     </div>
                 </div>
@@ -41,7 +48,7 @@
                         <textarea
                             class="texteAdmin"
                             name="content"
-                            placeholder="Veuillez écrire le contenu de l'article *" required ></textarea>
+                            placeholder="Veuillez écrire le contenu de l'article *" value="" required ><?= $article->getContent(); ?></textarea>
                     </div>
                 </div>
                 <div class="btnAdmin">
@@ -53,5 +60,7 @@
             </form>
 
         </div>
-
+        <?php
+    endforeach;
+    ?>
         

@@ -12,19 +12,21 @@
             <?php 
             if (!empty($articlesAllList)):
         foreach ($articlesAllList as $articleAll) :
-            
             ?>
             <tr>
                 <td><?= $articleAll->getTitle() ?></td>
                 <td><?= $articleAll->getRefPage() ?></td>
+                
                 <td>
-                    <a href="modifier.php" class="">
+                <a href="?page=modifier&id=<?= $articleAll->getId(); ?>">
                         <i class="material-icons" style="font-size:36px">cached</i>
                     </a>
                 </td>
                 <td>
-                    <a href="supprimer.php" class="">
+                    
+                <a href="?page=supprimer&id=<?= $articleAll->getId(); ?>">
                         <i class="material-icons" style="font-size:36px">delete</i>
+                        <input type=hidden name="deleteArticle" value="article"/>
                     </a>
                 </td>
             </tr>
