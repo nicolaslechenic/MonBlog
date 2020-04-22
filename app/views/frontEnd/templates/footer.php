@@ -8,7 +8,7 @@
                 <a href="#">Site Map</a>
             </p>
             <p>
-            <a href='?page=admin'>Se connecter en administrateur</a>
+            <a href='?page=edit'>Se connecter en administrateur</a>
             </p>
             <div class="soc-icons">
                 <span>Me suivre:</span>

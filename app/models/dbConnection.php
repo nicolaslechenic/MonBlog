@@ -23,6 +23,6 @@ function openConnexion(){
     return $pdo;
 }
 
-function closeConnexion() {
+function closeConnexion(){
     return null;
 }

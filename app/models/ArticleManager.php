@@ -122,28 +122,23 @@ class ArticleManager
     {
         // Pour modifier un commentaire
         $db = openConnexion();
-        $request = "UPDATE article SET ";
-         // Getter est une méthode chargée de renvoyer la valeur d'un attribut ex: getTitle voir article.php
-        $request .= "title ='" . $article->getTitle() . "content ='" . $article->getContent() . "', ' update_date" . $article->getUpdateDate() . "';";
-        $request .= "WHERE id ='" . $article->getId() . "';";
-        // On prépare et exécute la requête
+        $request = "UPDATE article SET content =' ". $article->getContent() ."', title =' ". $article->getTitle() ."', image =' ". $article->getImage() ."', ref_page =' ". $article->getRefPage() ."', update_date =' ". $article->getUpdateDate() ."' WHERE id =:id ";
+        $params= array("id"=>$_GET['id']);
         $stmt = $db->prepare($request);
-        $stmt->execute();
+        $stmt->execute($params);
         $db = closeConnexion();
-
         return $article;
     }
 
-    static function deleteArticle($article): Article
+    static function deleteArticle(Article $article): Article
     {
         // Pour supprimer un article
         $db = openConnexion();
-        $request = "DELETE FROM article WHERE id ='" . $article->getId() . "'";
-        // On prépare et exécute la requête
+        $request = "DELETE FROM article WHERE id =:id";
+        $params= array("id"=>$_GET['id']);
         $stmt = $db->prepare($request);
-        $stmt->execute();
+        $stmt->execute($params);
         $db = closeConnexion();
-
         return $article;
     }
 }

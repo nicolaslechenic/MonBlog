@@ -31,7 +31,7 @@
                 <div class="menu">
                     <ul id="menuActive">
                         <li class="nav">
-                            <a href='?page=admin'>
+                            <a href='?page=edit'>
                                 Nouvel article</a>
                         </li>
                         <li class="nav">

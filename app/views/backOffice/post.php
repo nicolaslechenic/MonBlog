@@ -1,6 +1,7 @@
 <div class="container">
     <h1 class="titreAdmin">Anciens Articles</h1>
     <div class="tableau">
+    
         <table>
             <tr class="hautTableau">
                 <td>Titre de l'article</td>
@@ -24,9 +25,9 @@
                 </td>
                 <td>
                     
-                <a href="?page=supprimer&id=<?= $articleAll->getId(); ?>">
+                <a href="?page=delete&id=<?= $articleAll->getId(); ?>">
                         <i class="material-icons" style="font-size:36px">delete</i>
-                        <input type=hidden name="deleteArticle" value="article"/>
+                        
                     </a>
                 </td>
             </tr>

@@ -18,19 +18,30 @@
     
 // Si différent de vide alors on appele la variable commentaire dans commentaireController.php
 // $_REQUEST = $_GET + $_POST + $_COOKIE par défaut
+
+    if($_SERVER['QUERY_STRING'] == '/admin'){
+            require_once 'app/views/backOffice/path.php';
+            
+    }
     if (!empty($_REQUEST['create'])) {
         if ($_REQUEST['create'] == 'commentaire') {
             include 'app/controllers/commentaireController.php';
-        }
-    }
-    if (!empty($_REQUEST['createArticle'])) {
-        if ($_REQUEST['createArticle'] == 'article') {
+        } elseif ($_REQUEST['create'] == 'article') {
             include 'app/controllers/articleController.php';
+            // dans ctrl
+            createArticle();
         }
-    }
-    if (!empty($_REQUEST['updateArticle'])) {
-        if ($_REQUEST['updateArticle'] == 'article') {
+    } elseif (!empty($_REQUEST['update'])) {
+        if ($_REQUEST['update'] == 'updateArticle') {
             include 'app/controllers/articleController.php';
+            // dans ctrl
+            updateArticle();
+        }
+    } elseif (!empty($_REQUEST['delete'])) {
+        if ($_REQUEST['deleteArticle'] == 'deleteArticle') {
+            include 'app/controllers/articleController.php';
+            // dans ctrl
+            deleteArticle();
         }
     }
     // if (!isset($_REQUEST['page']) && $_REQUEST['page'] !== 'admin') {
@@ -45,7 +56,7 @@
 <header>
     <?php
     // j'appelle un header different pour frontEnd et backOffice
-    if (!isset($_REQUEST['page']) || $_REQUEST['page'] !== 'admin'&& $_REQUEST['page'] !== 'post' && $_REQUEST['page'] !== 'modifier') {
+    if (!isset($_REQUEST['page']) || $_REQUEST['page'] !== 'edit'&& $_REQUEST['page'] !== 'post' && $_REQUEST['page'] !== 'modifier' && $_REQUEST['page'] !== 'delete') {
         include 'app/views/frontEnd/templates/header.php';
     } else {
         include 'app/views/backOffice/templates/header.php';
@@ -63,7 +74,7 @@
 <footer>
     <?php
     // j'appelle un header different pour frontEnd et backOffice
-    if (!isset($_REQUEST['page']) || $_REQUEST['page'] !== 'admin' && $_REQUEST['page'] !== 'post' && $_REQUEST['page'] !== 'modifier') {
+    if (!isset($_REQUEST['page']) || $_REQUEST['page'] !== 'edit' && $_REQUEST['page'] !== 'post' && $_REQUEST['page'] !== 'modifier' && $_REQUEST['page'] !== 'delete') {
         include 'app/views/frontEnd/templates/footer.php';
     } else {
         include 'app/views/backOffice/templates/footer.php';

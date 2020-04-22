@@ -1,35 +1,28 @@
+
 <div class="container">
-    <h1 class="titreAdmin">Modifier article</h1>
+    <h1 class="titreAdmin">Nouvel article</h1>
     <form class="formAdmin" action="" method="post" accept-charset="utf-8">
         <span class="echo">
-            <?php 
-                    if(isset($_REQUEST["updateArticle"])){
-                        echo "Votre article a bien été modifié !";
+                <?php 
+                    if(isset($_REQUEST["createArticle"])){
+                        echo "Votre article a bien été crée !";
                     };
                 ?>
         </span>
-        <?php     
-        foreach ($articlesList as $article) :        
-        ?>
         <div class="blocTitrePost">
-
+            
             <input
                 class="titrePost"
                 type="text"
                 name="title"
                 placeholder="Titre de l'article*"
-                value="<?= $article->getTitle() ?>"
                 required="required">
 
             <div class="file">
 
                 <label for="file">
                     Insérer une image</label>
-                <input
-                    type="file"
-                    name="image"
-                    value="<?= $article->getImage(); ?>"
-                    required="required">
+                <input type="file" name="image" required="required">
 
             </div>
         </div>
@@ -38,10 +31,9 @@
 
                 <label for="ref_page">Choisir la page :</label>
 
-                <?php 
-                        if(isset($_REQUEST['page']) ) : ?>
+                <?php if(isset($_REQUEST['page']) ) : ?>
                 <select name="ref_page" id="refPage" required="required">
-                    <option value="<?= $article->getRefPage(); ?>"><?= $article->getRefPage(); ?></option>
+
                     <option value="Australie">Australie</option>
                     <option value="Nouvelle-zelande">Nouvelle-Zélande</option>
                     <option value="Trucs_et_astuces">Trucs et Astuces</option>
@@ -55,19 +47,15 @@
                     class="texteAdmin"
                     name="content"
                     placeholder="Veuillez écrire le contenu de l'article *"
-                    value=""
-                    required="required"><?= $article->getContent(); ?></textarea>
+                    required="required"></textarea>
             </div>
         </div>
         <div class="btnAdmin">
 
-            <input type="hidden" name="updateArticle" value="updateArticle"/>
-            <input type="submit" value="Modifier !">
+            <input type="hidden" name="createArticle" value="article"/>
+            <input type="submit" value="Poster!">
 
         </div>
     </form>
 
 </div>
-<?php
-    endforeach;
-    ?>

@@ -1,21 +1,22 @@
-<FilesMatch "admin.php">
-Authname "Espace administration"
+<filesMatch "admin">
+Authname "Page d'administration, veuillez vous identifier"
 Authtype Basic
-AuthUserFile "c:\laragon\www\monBlog\views\backOffice\.htpasswd"
+AuthUserFile "c:\laragon\www\monBlog\.htpasswd"
 Require valid-user
-</FilesMatch>
+</filesMatch>
 
-#redirection du site avec www vars sans www
-#RewriteEngine On
-#RewriteCond %{HTTP_HOST} ^monsite.com [NC]
-#RewriteRule ^(.*)$ http://MonBlog-Austra-Zelandia.com/$1 [L,R=301]
+RewriteEngine On
+RewriteRule ^admin$  index.php?page=edit [L]
+
+
+
 
 #redirection vers https
 #RewriteCond %{SERVER_POST}
 #^80$ RewriteRule ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R]
 
 #redirection vers page erreur
-ErrorDocument 404 /404.html
+#ErrorDocument 404 /404.php
 
 # Compressions des fichiers statiques
 <IfModule mod_deflate.c> 

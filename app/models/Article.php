@@ -18,7 +18,7 @@ class Article{
         $this->setContent($content);
         $this->setImage($image);
         $this->setRefPage($refPage);
-
+        
         $now = date_create();
 
         $this->setCreationDate($now->format('Y-m-d'));
