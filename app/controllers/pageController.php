@@ -1,11 +1,33 @@
 <?php
-// Créaction du routeur
+/*
+                                | ---------------------------------PAGECONTROLLER---------------------------------- | 
+                                |                                                                                   |                                                                                                                                       
+                                |                   1/ Accueil                                                      |
+                                |                   2/ Autres pages                                                 |
+                                |                   3/ Fonctions des articles                                       |
+                                |                   4/ Fonctions des commentaires                                   |
+                                |                   5/ Découpage des pages                                          |                                
+                                |                                                                                   | 
+                                |-----------------------------------------------------------------------------------|
+*/
+
+
+
+//                              |------------------------------------ 1/ Accueil -----------------------------------|
+
+
 
 // Si vide, alors on affiche la page accueil
 if (empty($_REQUEST['page'])) {
     include 'app/views/frontEnd/pages/accueil.php';
 } 
-// Sinon on affiche les autres pages (voir ul header)
+
+
+
+//                              |--------------------------------- 2/ Autres pages ---------------------------------|
+
+
+
 else {
     $page = "";
     $pageAdmin = "";
@@ -42,7 +64,12 @@ else {
             break;
     }
 
-// Condition pour afficher les articles les pages
+
+    
+//                              |--------------------------------- 3/ Fonctions des articles --------------------------------|
+
+
+// Avec des conditions, on appelle les pages pour leurs appliquer les fonctions crées dans models
     if ($page != "page4" && $page != "accueil" && $pageAdmin != "edit" && $pageAdmin != "modifier" && $pageAdmin != "delete") {
         if ($pageAdmin != "post" && $page != "article") {
             /* :: = opérateur de résolution de portée =
@@ -55,6 +82,7 @@ else {
             $articlesAllList = ArticleManager::readAllArticles($_REQUEST['page']);     
         }
     }
+
     if( $pageAdmin == "modifier"  ){
         $articlesList = ArticleManager::readOneArticle();
         
@@ -65,12 +93,23 @@ else {
     
 
     
-// Condition pour afficher les commentaires sur les pages        
+//                              |------------------------------- 4/ Fonctions des commentaires ------------------------------|  
+
+
+
+// Avec des conditions, on appelle les pages pour leurs appliquer les fonctions crées dans models
     if ($page != "accueil" && $page != "page4" && $pageAdmin != "edit" && $pageAdmin != "post" && $pageAdmin != "modifier" && $pageAdmin != "delete") {          
         $commentairesList = CommentaireManager::readCommentaires($_REQUEST['page']);
         include 'app/views/frontEnd/commentaires/commentaireForm.php';
     }
-    // Découpe le chemin pour mettre .php aux variables
+
+
+
+//                              |------------------------------------- 5/ Découpage des pages -----------------------------------|  
+
+
+
+// Découpe le chemin pour mettre .php aux variables
     if($page){
         include 'app/views/frontEnd/pages/' . $page . '.php';
     }else{

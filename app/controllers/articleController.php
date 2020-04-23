@@ -1,25 +1,54 @@
 <?php
+/*
+                                | -------------------------------ARTICLECONTROLLER--------------------------------- | 
+                                |                                                                                   |
+                                |                             1/ Fonction article                                   |
+                                |                             2/ Fonction createArticle                             |
+                                |                             3/ Fonction updateArticle                              |   
+                                |                             4/ Fonction deleteArticle                             | 
+                                |                                                                                   |                                                             
+                                |-----------------------------------------------------------------------------------|
+*/
 
-// On instancie la classe Article
+
+
+//                              |------------------------------------ 1/ Fonction article -----------------------------------|
+
+
+
 function article(){
-
-return new Article($_REQUEST['title'],$_REQUEST['content'],$_REQUEST['image'],$_REQUEST['ref_page']);
+// On instancie la classe Article
+    return new Article($_REQUEST['title'],$_REQUEST['content'],$_REQUEST['image'],$_REQUEST['ref_page']);
 }
 
-// :: = opérateur de résolution de portée = 
-// permet d'appeler une classe static ou constant en dehors de celle-ci
 
-// on appele la fonction createArticle dans la classe ArticleManager
+
+//                              |------------------------------------ 1/ Fonction createArticle -----------------------------------|
+
+
 
 function createArticle(){
     $article = article();
     ArticleManager::createArticle($article);
 }
 
+
+
+//                              |------------------------------------ 3/ Fonction updateArticle -----------------------------------|
+
+
+
 function updateArticle(){
     $article = article();
     ArticleManager::updateArticle($article);
 }
+
+
+
+//                              |------------------------------------ 4/ Fonction deleteArticle -----------------------------------|
+
+
+
 function deleteArticle(){
     $article = article();
     ArticleManager::deleteArticle($article);

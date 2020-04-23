@@ -114,7 +114,5 @@
         } else {
             require_once 'app/views/backOffice/templates/footer.php';
         }
+        
 ?>
-
-
-
