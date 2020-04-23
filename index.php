@@ -1,86 +1,120 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php
+/*
+                                | -----------------------------------ROUTEUR MVC----------------------------------- | 
+                                |                                                                                   |                                                                                                                                       
+                                |                   1/ Head + models                                                |
+                                |                   2/ Chemin absolu Htaccess                                       |
+                                |                   3/ Controller Article + Controller Commentaire                  |
+                                |                   4/ Ossature header + Page Controller + footer                   |
+                                |                                                                                   | 
+                                |-----------------------------------------------------------------------------------|
+*/
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Blog">
-    <meta name="author" content="Stéphanie Lemaitre">
-    <meta name="robots" content="nofollow">
-    <?php
-// J'appelle mes fichiers dans models
-    include 'app/models/dbConnection.php';
-    include 'app/models/CommentaireManager.php';
-    include 'app/models/Commentaire.php';
-    include 'app/models/ArticleManager.php';
-    include 'app/models/Article.php';
+
+
+//                              |--------------------------------- 1/ HEAD + MODELS --------------------------------|
+
+
+
+    // J'appelle mon head qui est dynamique(en cours)
+        require_once 'app/views/frontEnd/templates/head.php';
+
+    // J'appelle mes fichiers dans models ( appel de la bdd, des objets, des CRUD et autres fonctions)
+        require_once 'app/models/dbConnection.php';
+        require_once 'app/models/Commentaire.php';
+        require_once 'app/models/CommentaireManager.php';
+        require_once 'app/models/Article.php';
+        require_once 'app/models/ArticleManager.php';
+        
     
-// Si différent de vide alors on appele la variable commentaire dans commentaireController.php
-// $_REQUEST = $_GET + $_POST + $_COOKIE par défaut
 
-    if($_SERVER['QUERY_STRING'] == '/admin'){
-            require_once 'app/views/backOffice/path.php';
-            
-    }
-    if (!empty($_REQUEST['create'])) {
-        if ($_REQUEST['create'] == 'commentaire') {
-            include 'app/controllers/commentaireController.php';
-        } elseif ($_REQUEST['create'] == 'article') {
-            include 'app/controllers/articleController.php';
-            // dans ctrl
-            createArticle();
+
+//                              |----------------------------- 2/ Chemin absolu Htaccess/Htpasswd ---------------------------|
+
+
+
+/* 
+ Le fichier/extension Htaccess permettent d'établir des règles qui sont interprétées par le serveur (Apache). 
+ Le fichier path.php = chemin absolu du .htpasswd qui sera inscrit dans le Htaccess.
+ Une fois sur le serveur le chemin absolu n'est plus utile.
+*/
+    /* 
+       $_SERVER = tableau contenant le chemin du script
+       QUERY_STRING = requête de chaine de caractére
+       Si dans mon URL, le server trouve '/admin' alors il ira chercher path.php pour faire un echo du chemin absolu de .htpasswd 
+    */
+
+        if($_SERVER['QUERY_STRING'] == '/admin'){
+            require_once 'app/views/backOffice/path.php';        
         }
-    } elseif (!empty($_REQUEST['update'])) {
-        if ($_REQUEST['update'] == 'updateArticle') {
-            include 'app/controllers/articleController.php';
-            // dans ctrl
-            updateArticle();
+
+
+
+//                               |----------------- 3/ Controller Article + Controller Commentaire -----------------|            
+
+
+
+/* 
+ isset = si différent de vide -> alors on appele la variable commentaire dans commentaireController.php 
+ $_REQUEST = $_GET + $_POST + $_COOKIE par défaut
+*/
+
+    /* 
+     Dans les formulaires de creation, modification et suppression(article/commentaire), j'ai inséré un 'input hidden' avec un 'name' et une 'value'.
+     Si je récupére bien le 'name' et que ce 'name' et bien = à sa 'value' alors j'appelle le controller et j'applique sa fonction.
+    */
+        if (isset($_REQUEST['create'])) {
+            if ($_REQUEST['create'] == 'commentaire') {
+                require_once 'app/controllers/commentaireController.php';
+            } elseif ($_REQUEST['create'] == 'article') {
+                require_once 'app/controllers/articleController.php';
+                // dans controller
+                createArticle();
+            }
+        } elseif (isset($_REQUEST['update'])) {
+            if ($_REQUEST['update'] == 'updateArticle') {
+                require_once 'app/controllers/articleController.php';
+                // dans controller
+                updateArticle();
+            }
+        } elseif (isset($_REQUEST['delete'])) {
+            if ($_REQUEST['deleteArticle'] == 'deleteArticle') {
+                require_once 'app/controllers/articleController.php';
+                // dans controller
+                deleteArticle();
+            }
         }
-    } elseif (!empty($_REQUEST['delete'])) {
-        if ($_REQUEST['deleteArticle'] == 'deleteArticle') {
-            include 'app/controllers/articleController.php';
-            // dans ctrl
-            deleteArticle();
+    
+
+
+//                               |----------------- 4/ Ossature header + Page Controller + footer -----------------|
+
+
+
+/*  
+ On crée notre modéle de page qui sera rappellé a chaque $_REQUEST['page] => voir pageController
+ empty = vide
+ Si ma requête 'page' est vide, ou si elle est differente des pages ... alors j'affiche, sinon, j'affiche ...
+*/
+
+    // J'appelle un header différent pour frontEnd et backOffice
+        if (empty($_REQUEST['page']) || ($_REQUEST['page'] !== 'edit'&& $_REQUEST['page'] !== 'post' && $_REQUEST['page'] !== 'modifier' && $_REQUEST['page'] !== 'delete')) {
+            require_once 'app/views/frontEnd/templates/header.php';
+        } else {
+            require_once 'app/views/backOffice/templates/header.php';
         }
-    }
-    // if (!isset($_REQUEST['page']) && $_REQUEST['page'] !== 'admin') {
-           // if(!isAdmin()){
-            //    $_REQUEST['page'] = $_REQUEST['login'];
-           // }
-    // }
+    
 
-    ?>
-</head>
-<!-- On crée notre modéle de page qui sera rappellé a chaque $_REQUEST -->
-<header>
-    <?php
-    // j'appelle un header different pour frontEnd et backOffice
-    if (!isset($_REQUEST['page']) || $_REQUEST['page'] !== 'edit'&& $_REQUEST['page'] !== 'post' && $_REQUEST['page'] !== 'modifier' && $_REQUEST['page'] !== 'delete') {
-        include 'app/views/frontEnd/templates/header.php';
-    } else {
-        include 'app/views/backOffice/templates/header.php';
-    }
-    ?>
-</header>
-<body>
-    <!-- le body sera controllé par le controller pageController -->
-<article>
-    <?php
-    include 'app/controllers/pageController.php';
-    ?>
-</article>
-</body>
-<footer>
-    <?php
-    // j'appelle un header different pour frontEnd et backOffice
-    if (!isset($_REQUEST['page']) || $_REQUEST['page'] !== 'edit' && $_REQUEST['page'] !== 'post' && $_REQUEST['page'] !== 'modifier' && $_REQUEST['page'] !== 'delete') {
-        include 'app/views/frontEnd/templates/footer.php';
-    } else {
-        include 'app/views/backOffice/templates/footer.php';
-    }
-    ?>
+    //  le body sera controllé par le controller pageController
+        require_once 'app/controllers/pageController.php';
 
-</footer>
+    // j'appelle un footer différent pour frontEnd et backOffice
+        if (empty($_REQUEST['page']) || ($_REQUEST['page'] !== 'edit' && $_REQUEST['page'] !== 'post' && $_REQUEST['page'] !== 'modifier' && $_REQUEST['page'] !== 'delete')) {
+            require_once 'app/views/frontEnd/templates/footer.php';
+        } else {
+            require_once 'app/views/backOffice/templates/footer.php';
+        }
+?>
 
-</html>
+
+

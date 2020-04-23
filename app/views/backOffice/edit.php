@@ -4,7 +4,7 @@
     <form class="formAdmin" action="" method="post" accept-charset="utf-8">
         <span class="echo">
                 <?php 
-                    if(isset($_REQUEST["createArticle"])){
+                    if(isset($_REQUEST["create"])){
                         echo "Votre article a bien été crée !";
                     };
                 ?>
@@ -52,7 +52,7 @@
         </div>
         <div class="btnAdmin">
 
-            <input type="hidden" name="createArticle" value="article"/>
+            <input type="hidden" name="create" value="article"/>
             <input type="submit" value="Poster!">
 
         </div>
