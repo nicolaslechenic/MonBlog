@@ -1,23 +1,39 @@
-
 <?php
+/*
+                                | -----------------------------CLASS COMMENTAIREMANAGER---------------------------- | 
+                                |                                                                                   |
+                                |                             1/ Fonction createACommentaire                        |
+                                |                             2/ Fonction readCommentaires                          |
+                                |                             3/ Fonction updateCommentaire                         |
+                                |                             6/ Fonction deleteCommentaire                         |                                
+                                |                                                                                   |
+                                |-----------------------------------------------------------------------------------|
+*/
 
-class CommentaireManager
-{
-    // Fonction appelée dans commenataireController.php
+
+class CommentaireManager{
+
+
+//                              |--------------------------- 1/ Fonction createCommentaire -----------------------------|
+
+
+
+// Fonction créer un commentaire via la class Commentaire
     static function createCommentaire(Commentaire $commentaire): Commentaire
     {
         // Pour créer un commentaire
         // On se connecte à la base de donnée
         $db = openConnexion();
-        // On insére dans la table commentaire
-        $request = "INSERT INTO commentaire (user_pseudo, creation_date, update_date, content, ref_page) VALUES ";
 
-         // Getter est une méthode chargée de renvoyer la valeur d'un attribut ex: getUserPseudo voir Commentaire.php
+        // On insére dans la table commentaire le pseudo, la date de création, la date de mise à jour, la ref_page
+        $request = "INSERT INTO commentaire (user_pseudo, creation_date, update_date, content, ref_page) VALUES ";
         $request .= '( "' . $commentaire->getUserPseudo() . '", "' . $commentaire->getCreationDate() . '", "' . $commentaire->getUpdateDate() . '", "' . $commentaire->getContent() . '", "' . $commentaire->getRefPage() . '");';
+        
         // On prépare et exécute la requête
         $stmt = $db->prepare($request);
         $stmt->execute();
 
+        // On insére dans la variable $lastId l'identifiant de la dernière valeur
         $lastId = $db->lastInsertId();
 
         $commentaire->setId($lastId);
@@ -27,11 +43,17 @@ class CommentaireManager
     }
 
 
-    // Fonction appelée dans pageController.php
+
+//                              |--------------------------- 2/ Fonction readCommentaires -----------------------------|
+
+
+
+// Fonction afficher un/des commentaire/s par rapport à la page(ref_page)
     static function readCommentaires(string $pageName): array
     {
-        // Pour lire un commentaire dans la bdd
+        // On se connecte à la base de donnée
         $db = openConnexion();
+
         // Après avoir tout sélectionné selectionné dans la table commentaire
         // On le stoocke dans un tableau
         $commentairesList = [];
@@ -42,11 +64,13 @@ class CommentaireManager
         $stmt = $db->prepare($request);
         $stmt->execute();
 
-        //FETCH-ASSOC = mode de récupération de données qui retourne un tableau indéxé par colonne 
-        //Ne permet pas d'appeler plusieurs colonnes du même nom
+        /*
+        FETCH-ASSOC = mode de récupération de données qui retourne un tableau indéxé par colonne 
+        Ne permet pas d'appeler plusieurs colonnes du même nom
+        */
 
         while ($commentairesFromDb = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            // On instancie Commenataire
+            // On instancie Commentaire
             $commentaire = new Commentaire($commentairesFromDb['user_pseudo'],$commentairesFromDb['content'],$commentairesFromDb['ref_page']);
             $commentaire->setId($commentairesFromDb['id']);
             $commentaire->setCreationDate($commentairesFromDb['creation_date']);
@@ -60,30 +84,49 @@ class CommentaireManager
         return $commentairesList;
     }
 
+
+
+//                              |--------------------------- 3/ Fonction updateCommentaire -----------------------------|
+
+
+
+// Fonction mettre à jour un commentaire via la class Commentaire
     static function updateCommentaire(Commentaire $commentaire): Commentaire
     {
-        // Pour modifier un commenaitre
+        // On se connecte à la base de donnée
         $db = openConnexion();
-        $request = "UPDATE commentaire SET ";
-         // Getter est une méthode chargée de renvoyer la valeur d'un attribut ex: getUserPseudo voir Commentaire.php
-        $request .= "content ='" . $commentaire->getContent() . "', ' update_date" . $commentaire->getUpdateDate() . "');";
-        $request .= "WHERE id ='" . $commentaire->getId() . "');";
+
+        $request = "UPDATE commentaire SET content ='" . $commentaire->getContent() ."',  update_date =' ". $commentaire->getUpdateDate() ."' WHERE id =:id ";
+        $params= array("id"=>$_GET['id']); 
+
         // On prépare et exécute la requête
         $stmt = $db->prepare($request);
-        $stmt->execute();
+        $stmt->execute($params);
+
         $db = closeConnexion();
 
         return $commentaire;
     }
 
+
+
+//                              |--------------------------- 4/ Fonction deleteCommentaire -----------------------------|
+
+
+
+// Fonction supprimer un commentaire via la class Commentaire
     static function deleteCommentaire($commentaire): Commentaire
     {
-        // Pour supprimer un commentaire
+        // On se connecte à la base de donnée
         $db = openConnexion();
-        $request = "DELETE FROM commentaire WHERE id ='" . $commentaire->getId() . "'";
+
+        $request = "DELETE FROM commentaire WHERE id =:id";
+        $params= array("id"=>$_GET['id']);
+
         // On prépare et exécute la requête
         $stmt = $db->prepare($request);
         $stmt->execute();
+
         $db = closeConnexion();
 
         return $commentaire;

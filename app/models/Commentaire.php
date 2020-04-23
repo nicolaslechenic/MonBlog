@@ -1,8 +1,26 @@
 <?php
+/*
+                                | --------------------------------CLASS COMMENTAIRE-------------------------------- |                                                                                                                                                                                     
+                                |                                                                                   |
+                                |                          1/ Privatisation des propriétés                          |
+                                |                          2/ Fonction __construct                                  |
+                                |                          3/ Getters et Setters                                    |
+                                |                                                                                   |
+                                |-----------------------------------------------------------------------------------|
+*/
 
 
-class Commentaire
-{
+
+class Commentaire{
+    
+
+
+//                              |------------------------ 1/ Privatisation des propriétés --------------------------|
+
+
+
+// private = visibilité des éléments/propriétés réduit à la classe elle-même
+
     private $id;
     private $userPseudo;
     private $creationDate;
@@ -10,7 +28,17 @@ class Commentaire
     private $content;
     private $refPage;
 
-    //  fonction qui s'exécute automatiquement et qui permet d'exploiter les variables
+
+
+//                              |----------------------------- 2/ Fonction __construct -----------------------------|
+
+
+
+/* 
+ Fonction qui s'exécute automatiquement à la création de l'objet et qui permet d'exploiter les variables 
+ public = visiblité totale des éléments
+*/ 
+
     public function __construct($userPseudo, $content, $refPage)
     {
 
@@ -24,9 +52,17 @@ class Commentaire
         $this->setUpdateDate($now->format('Y-m-d'));
     }
 
-    // Setters et getters
-    // Getter est une méthode chargée de renvoyer la valeur d'un attribut
-    // Setter est une méthode chargée d'assigner une valeur à un attribut en vérifiant son intégrité
+
+
+//                              |------------------------------ 3/ Getters et Setters ------------------------------|
+
+
+/* 
+ Getter est une méthode chargée de renvoyer la valeur d'un attribut
+ Setter est une méthode chargée d'assigner une valeur à un attribut en vérifiant son intégrité
+*/
+
+    // getter/setter id
     public function getId()
     {
         return $this->id;
@@ -38,6 +74,7 @@ class Commentaire
         return $this;
     }
 
+    // getter/setter pseudo
     public function getUserPseudo()
     {
         return $this->userPseudo;
@@ -49,6 +86,7 @@ class Commentaire
         return $this;
     }
 
+    // getter/setter date
     public function getCreationDate()
     {
         return $this->creationDate;
@@ -60,6 +98,7 @@ class Commentaire
         return $this;
     }
 
+    // getter/setter mise à jour date
     public function getUpdateDate()
     {
         return $this->updateDate;
@@ -71,6 +110,7 @@ class Commentaire
         return $this;
     }
 
+    // getter/setter contenu
     public function getContent()
     {
         return $this->content;
@@ -82,6 +122,7 @@ class Commentaire
         return $this;
     }
 
+    // getter/setter ref_page
     public function getRefPage()
     {
         return $this->refPage;

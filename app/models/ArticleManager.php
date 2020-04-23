@@ -1,23 +1,42 @@
-
 <?php
+/*
+                                | -------------------------------CLASS ARTICLEMANAGER------------------------------ | 
+                                |                                                                                   |
+                                |                             1/ Fonction createArticle                             |
+                                |                             2/ Fonction readArticles                              |
+                                |                             3/ Fonction readOneArticle                            |
+                                |                             4/ Fonction readAllArticles                           |
+                                |                             5/ Fonction updateArticle                             |
+                                |                             6/ Fonction deleteArticle                             |                                
+                                |                                                                                   |
+                                |-----------------------------------------------------------------------------------|
+*/
+
 
 class ArticleManager
 {
-    // fonction appelée dans commentaireController.php
+
+
+//                              |--------------------------- 1/ Fonction createArticle -----------------------------|
+
+
+
+// Fonction créer un article via la class Article
     static function createArticle(Article $article): Article
     {
         // Pour créer un article
         // On se connecte à la base de donnée
         $db = openConnexion();
-        // On insére dans la table article
+        
+        // On insére dans la table 'article' le titre, l'image, la date de création, la date de mise à jour, le contenu, la ref-page 
         $request = "INSERT INTO article (title, image, creation_date, update_date, content, ref_page) VALUES ";
-
-        // Getter est une méthode chargée de renvoyer la valeur d'un attribut ex: getTitle voir article.php
         $request .= '( "' . $article->getTitle() . '", "' . $article->getImage() . '","' . $article->getCreationDate() . '", "' . $article->getUpdateDate() . '", "' . $article->getContent() . '", "' . $article->getRefPage() . '");';
+        
         // On prépare et exécute la requête
         $stmt = $db->prepare($request);
         $stmt->execute();
 
+        // On insére dans la variable $lastId l'identifiant de la dernière valeur
         $lastId = $db->lastInsertId();
 
         $article->setId($lastId);
@@ -27,24 +46,37 @@ class ArticleManager
     }
 
 
-    // fonction appelée dans pageController.php
+
+//                              |---------------------------- 2/ Fonction readArticles -----------------------------|
+
+
+
+// Fonction afficher un/des article/s par rapport à la page(ref_page)
     static function readArticles($pageName): array
     {
-        // Pour lire un article dans la bdd
+        // On se connecte à la base de donnée
         $db = openConnexion();
-        // Après avoir tout sélectionné selectionné dans la table article
-        // On le stoocke dans un tableau 
+        /* 
+         Après avoir tout sélectionné selectionné dans la table article
+         On le stoocke dans un tableau 
+        */ 
         $articlesList = [];
 
+        // On séléctionne tout dans la table article dans la colonne ref_pag = $pageName
         $request = "SELECT * FROM article WHERE ref_page like '" . $pageName . "';" ;
 
         // On prépare et exécute la requête
         $stmt = $db->prepare($request);
         $stmt->execute();
 
+        /*
+         On crée une boucle tant que ...
+         FETCH-ASSOC = mode de récupération de données qui retourne un tableau indéxé par colonne 
+         Ne permet pas d'appeler plusieurs colonnes du même nom
+        */
 
         while ($articlesFromDb = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            // On instancie Commenataire
+            // On instancie un nouvel article
             $article = new Article($articlesFromDb['title'],$articlesFromDb['content'],$articlesFromDb['image'],$articlesFromDb['ref_page']);
             $article->setId($articlesFromDb['id']);
             $article->setCreationDate($articlesFromDb['creation_date']);
@@ -58,10 +90,16 @@ class ArticleManager
         return $articlesList;
     }
 
-    static function readOneArticle()
+
+
+//                              |-------------------------- 3/ Fonction readOneArticle ----------------------------|
+
+
+// Fonction afficher un seul article
+    static function readOneArticle() : array
 
     {
-        // Pour lire un article dans la bdd
+        // On se connecte à la base de donnée
         $db = openConnexion();
         // Après avoir tout sélectionné selectionné dans la table article
         // On le stoocke dans un tableau 
@@ -74,7 +112,7 @@ class ArticleManager
         $params= array("id"=>$_GET['id']);
         $stmt->execute($params);
         $articleFromDb = $stmt->fetch();
-       // On instancie article
+        // On instancie un nouvel article
             $article = new Article($articleFromDb['title'],$articleFromDb['content'],$articleFromDb['image'],$articleFromDb['ref_page']);
             $article->setId($articleFromDb['id']);
             $article->setCreationDate($articleFromDb['creation_date']);
@@ -88,23 +126,35 @@ class ArticleManager
         return $articlesList;
     }
 
+
+
+ //                              |-------------------------- 4/ Fonction readAllArticles --------------------------|
+
+
+// Fonction afficher tous les articles
     static function readAllArticles(): array
     {
-        // Pour lire les articles dans la bdd
+        // On se connecte à la base de donnée
         $db = openConnexion();
+
         // Après avoir tout sélectionné dans la table article
         // On le stoocke dans un tableau 
         $articlesAllList = [];
 
+        // On séléctionne tout dans la table article
         $request = "SELECT * FROM article" ;
 
         // On prépare et exécute la requête
         $stmt = $db->prepare($request);
         $stmt->execute();
 
-
+        /*
+         On crée une boucle tant que ...
+         FETCH-ASSOC = mode de récupération de données qui retourne un tableau indéxé par colonne 
+         Ne permet pas d'appeler plusieurs colonnes du même nom
+        */
         while ($articlesFromDb = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            // On instancie Commentaire
+            // On instancie un nouvel article
             $articleAll = new Article($articlesFromDb['title'],$articlesFromDb['content'],$articlesFromDb['image'],$articlesFromDb['ref_page']);
             $articleAll->setId($articlesFromDb['id']);
             $articleAll->setCreationDate($articlesFromDb['creation_date']);
@@ -118,27 +168,51 @@ class ArticleManager
         return $articlesAllList;
     }
 
+
+
+//                              |-------------------------- 5/ Fonction updateArticle -----------------------------|
+
+
+// Fonction mettre à jour un article via la class Article
     static function updateArticle(Article $article): Article
     {
-        // Pour modifier un commentaire
+        // On se connecte à la base de donnée
         $db = openConnexion();
+
+        // On fait une mise à jour dans la table article sur le contenu, le titre, l'image, la ref_page, la date
         $request = "UPDATE article SET content =' ". $article->getContent() ."', title =' ". $article->getTitle() ."', image =' ". $article->getImage() ."', ref_page =' ". $article->getRefPage() ."', update_date =' ". $article->getUpdateDate() ."' WHERE id =:id ";
         $params= array("id"=>$_GET['id']);
+
+        // On prépare et exécute la requête
         $stmt = $db->prepare($request);
         $stmt->execute($params);
+
         $db = closeConnexion();
+
         return $article;
     }
 
+
+
+//                              |-------------------------- 6/ Fonction deleteArticle ----------------------------|
+
+
+// Fonction supprimer un article via la class Article
     static function deleteArticle(Article $article): Article
     {
-        // Pour supprimer un article
+        // On se connecte à la base de donnée
         $db = openConnexion();
+
+        // On supprime un article avec son id
         $request = "DELETE FROM article WHERE id =:id";
         $params= array("id"=>$_GET['id']);
+
+        // On prépare et exécute la requête
         $stmt = $db->prepare($request);
         $stmt->execute($params);
+
         $db = closeConnexion();
+
         return $article;
     }
 }
