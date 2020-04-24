@@ -31,11 +31,11 @@
                 <div class="menu">
                     <ul id="menuActive">
                         <li class="nav">
-                            <a href='?page=edit'>
+                            <a href='?action=editer'>
                                 Nouvel article</a>
                         </li>
                         <li class="nav">
-                        <a href='?page=post'>
+                        <a href='?action=ancien'>
                                 Anciens Articles</a>
                         </li>
                       

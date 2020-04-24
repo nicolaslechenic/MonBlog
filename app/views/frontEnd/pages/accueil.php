@@ -1,3 +1,5 @@
+<?php require "app/views/frontEnd/templates/head.php"; ?>
+<?php require "app/views/frontEnd/templates/header.php"; ?>
 
 <div class="container">
     <section class="main">
@@ -87,4 +89,5 @@
 
 </div>
 
-<!-- <script>menuAct(0); </script> -->
+<?php require "app/views/frontEnd/templates/footer.php"; ?>
+<script>menuAct(0); </script>

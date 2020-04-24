@@ -1,9 +1,9 @@
 {
-    "name": "steph/austra",
-    "description": "projet mvc de fin d'année",
+    "name": "steph/mvc",
+    "description": "projet test mvc",
     "authors": [
         {
-            "name": "Stephanie lemaitre",
+            "name": "Stephanie Lemaitre",
             "email": "stephanie.lemaitre56@gmail.com"
         }
     ],

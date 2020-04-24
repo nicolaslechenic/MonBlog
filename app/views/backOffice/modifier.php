@@ -1,3 +1,6 @@
+<?php include 'app/views/frontEnd/templates/head.php'; ?>
+<?php include 'app/views/backOffice/templates/header.php'; ?>
+
 <div class="container">
     <h1 class="titreAdmin">Modifier article</h1>
     <form class="formAdmin" action="" method="post" accept-charset="utf-8">
@@ -71,3 +74,6 @@
 <?php
     endforeach;
     ?>
+
+<?php include 'app/views/backOffice/templates/footer.php'; ?>
+<script>menuAct(1); </script>

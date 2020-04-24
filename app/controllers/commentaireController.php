@@ -1,19 +1,28 @@
 <?php
+namespace Projet\Controllers;
+namespace Projet\Models;
+
 /*
-                                | ---------------------------COMMENTAIRECONTROLLER--------------------------------- | 
+                                | -----------------------------COMMENTAIRECONTROLLER------------------------------- | 
                                 |                                                                                   |
+                                |                        1/ Fonction createCommentaire                              |
+                                |                                                                                   |                                                            
                                 |-----------------------------------------------------------------------------------|
 */
 
 
-// On instancie la classe Commentaire
+
+class CommentaireController extends CommentaireManager{
+
+
+
+//                              |---------------------------- 1/ Fonction createCommentaire -------------------------|
+
+
+
+function createCommentaire(){
     $commentaire = new Commentaire($_REQUEST['user_pseudo'],$_REQUEST['text'],$_REQUEST['ref_page']);
-
-/* 
- On appelle la fonction createCommentaire dans la classe CommentaireManager
- Cette fonction est utilisée sur pageController
-*/
     CommentaireManager::createCommentaire($commentaire);
+}
 
-
-
+}

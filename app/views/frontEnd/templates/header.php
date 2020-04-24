@@ -13,23 +13,23 @@
                     <ul id="menuActive">
                         <!-- On rappelle le ref_Page de pageController -->
                         <li class="nav">
-                        <a href='?page=accueil'>
+                        <a href='?action=accueil'>
                                 Accueil</a>
                         </li>
                         <li class="nav">
-                        <a href='?page=Australie'>
+                        <a href='?action=australie'>
                                 Australie</a>
                         </li>
                         <li class="nav">
-                        <a href='?page=Nouvelle-zelande'>
+                        <a href='?action=nouvelle-zelande'>
                                 Nouvelle-Zélande</a>
                         </li>
                         <li class="nav">
-                        <a href='?page=Trucs_et_astuces'>
+                        <a href='?action=trucs_et_astuces'>
                                 Trucs et astuces</a>
                         </li>
                         <li class="nav">
-                        <a href='?page=contact'>
+                        <a href='?action=contact'>
                                 Contact</a>
                         </li>
 

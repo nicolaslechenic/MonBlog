@@ -1,4 +1,5 @@
-
+<?php require "app/views/frontEnd/templates/head.php"; ?>
+<?php require "app/views/frontEnd/templates/header.php"; ?>
 <div class="containerTrois">
     <h1>Contact</h1>
     <p class="ssTitre">Vous avez une question ? Vous voulez me dire à quel point
@@ -24,5 +25,5 @@
                 <input type="submit" class="submitContact"></form>
 
             </div>
-           
-            <!-- <script>menuAct(4); </script> -->
+<?php include 'app/views/frontEnd/templates/footer.php'; ?>           
+<script>menuAct(4); </script>

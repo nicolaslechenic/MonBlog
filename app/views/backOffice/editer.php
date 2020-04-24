@@ -1,4 +1,5 @@
-
+<?php include 'app/views/frontEnd/templates/head.php'; ?>
+<?php include 'app/views/backOffice/templates/header.php'; ?>
 <div class="container">
     <h1 class="titreAdmin">Nouvel article</h1>
     <form class="formAdmin" action="" method="post" accept-charset="utf-8">
@@ -57,5 +58,7 @@
 
         </div>
     </form>
-
 </div>
+
+<?php include 'app/views/backOffice/templates/footer.php'; ?>
+<script>menuAct(0); </script>

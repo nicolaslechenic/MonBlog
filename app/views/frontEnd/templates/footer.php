@@ -8,16 +8,13 @@
         <a href="#">Site Map</a>
     </p>
     <p>
-        <a href='?page=edit'>Se connecter en administrateur</a>
+        <a href='?action=editer'>Se connecter en administrateur</a>
     </p>
     <div class="soc-icons">
         <span>Me suivre:</span>
-        <a href="#">
-            <img src="app/public/images/icon-1.jpg" alt="icon"></a>
-            <a href="#">
-                <img src="app/public/images/icon-2.jpg" alt="icon"></a>
-
-            </div>
+        <a href="https://twitter.com/login?lang=fr"><img src="app/public/images/icon-1.jpg" alt="icon"></a>
+        <a href="https://www.facebook.com"><img src="app/public/images/icon-2.jpg" alt="icon"></a>
+    </div>
         </footer>
         <script src="app/public/js/active.js"></script>
         <script src="app/public/js/creds.js"></script>

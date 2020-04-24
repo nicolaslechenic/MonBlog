@@ -1,4 +1,7 @@
+<?php include 'app/views/frontEnd/templates/head.php'; ?>
+<?php include 'app/views/backOffice/templates/header.php'; ?>
 <div class="container">
+
     <h1 class="titreAdmin">Anciens Articles</h1>
     <div class="tableau">
     
@@ -42,3 +45,6 @@
 
         </table>
     </div>
+    
+<?php include 'app/views/backOffice/templates/footer.php'; ?>
+<script>menuAct(1); </script>

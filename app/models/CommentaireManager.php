@@ -1,4 +1,5 @@
 <?php
+namespace Projet\Models;
 /*
                                 | -----------------------------CLASS COMMENTAIREMANAGER---------------------------- | 
                                 |                                                                                   |
@@ -11,8 +12,10 @@
 */
 
 
-class CommentaireManager{
+class CommentaireManager extends DbConnexion
+{
 
+    
 
 //                              |--------------------------- 1/ Fonction createCommentaire -----------------------------|
 
@@ -23,7 +26,7 @@ class CommentaireManager{
     {
         // Pour créer un commentaire
         // On se connecte à la base de donnée
-        $db = openConnexion();
+        $db = DbConnexion::openConnexion();
 
         // On insére dans la table commentaire le pseudo, la date de création, la date de mise à jour, la ref_page
         $request = "INSERT INTO commentaire (user_pseudo, creation_date, update_date, content, ref_page) VALUES ";
@@ -37,7 +40,7 @@ class CommentaireManager{
         $lastId = $db->lastInsertId();
 
         $commentaire->setId($lastId);
-        $db = closeConnexion();
+        $db = DbConnexion::closeConnexion();
 
         return $commentaire;
     }
@@ -49,10 +52,10 @@ class CommentaireManager{
 
 
 // Fonction afficher un/des commentaire/s par rapport à la page(ref_page)
-    static function readCommentaires(string $pageName): array
+    function readCommentaires(string $pageName): array
     {
         // On se connecte à la base de donnée
-        $db = openConnexion();
+        $db = DbConnexion::openConnexion();
 
         // Après avoir tout sélectionné selectionné dans la table commentaire
         // On le stoocke dans un tableau
@@ -69,7 +72,7 @@ class CommentaireManager{
         Ne permet pas d'appeler plusieurs colonnes du même nom
         */
 
-        while ($commentairesFromDb = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        while ($commentairesFromDb = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             // On instancie Commentaire
             $commentaire = new Commentaire($commentairesFromDb['user_pseudo'],$commentairesFromDb['content'],$commentairesFromDb['ref_page']);
             $commentaire->setId($commentairesFromDb['id']);
@@ -79,7 +82,7 @@ class CommentaireManager{
             $commentairesList [] = $commentaire;
         }
 
-        $db = closeConnexion();
+        $db = DbConnexion::closeConnexion();
 
         return $commentairesList;
     }
@@ -91,10 +94,10 @@ class CommentaireManager{
 
 
 // Fonction mettre à jour un commentaire via la class Commentaire
-    static function updateCommentaire(Commentaire $commentaire): Commentaire
+    function updateCommentaire(Commentaire $commentaire): Commentaire
     {
         // On se connecte à la base de donnée
-        $db = openConnexion();
+        $db = DbConnexion::openConnexion();
 
         $request = "UPDATE commentaire SET content ='" . $commentaire->getContent() ."',  update_date =' ". $commentaire->getUpdateDate() ."' WHERE id =:id ";
         $params= array("id"=>$_GET['id']); 
@@ -103,7 +106,7 @@ class CommentaireManager{
         $stmt = $db->prepare($request);
         $stmt->execute($params);
 
-        $db = closeConnexion();
+        $db = DbConnexion::closeConnexion();
 
         return $commentaire;
     }
@@ -118,7 +121,7 @@ class CommentaireManager{
     static function deleteCommentaire($commentaire): Commentaire
     {
         // On se connecte à la base de donnée
-        $db = openConnexion();
+        $db = DbConnexion::openConnexion();
 
         $request = "DELETE FROM commentaire WHERE id =:id";
         $params= array("id"=>$_GET['id']);
@@ -127,7 +130,7 @@ class CommentaireManager{
         $stmt = $db->prepare($request);
         $stmt->execute();
 
-        $db = closeConnexion();
+        $db = DbConnexion::closeConnexion();
 
         return $commentaire;
     }

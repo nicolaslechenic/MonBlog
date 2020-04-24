@@ -7,7 +7,7 @@
         
             <textarea id="commentaire" name="text" rows="10" cols="30" required="required"></textarea>
         </label>
-        <input type=hidden name="ref_page" value="<?= $_REQUEST["page"] ?>"/>
+        <!-- <input type=hidden name="ref_page" value="<?= $_REQUEST["page"] ?>"/> -->
         <input type=hidden name="create" value="commentaire"/>
         <input type="Submit" name="submit" value="Envoyer un commentaire"/>
     </form>
