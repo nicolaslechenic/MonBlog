@@ -1,0 +1,10 @@
+/*                              |----------------------------------- PLUGIN CURSOR -----------------------------------|                                  */
+
+.cursor{
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    transform: translate(-100%, 0);
+    pointer-events: none;
+    z-index: 1;
+}

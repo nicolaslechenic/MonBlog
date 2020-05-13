@@ -5,7 +5,7 @@
     .logo {
         display: none;
     }
-    /*menu burger*/
+    /*-----------menu burger------------*/
     .menu-principal {
         position: relative;
         text-align: center;
@@ -38,7 +38,7 @@
         opacity: 1;
 
     }
-    /* container  */
+    /* ------------container-----------*/
     .main {
         width: 100%;
     }
@@ -48,7 +48,7 @@
     aside {
         display: none;
     }
-    /* commentaire  */
+    /* -----------commentaire-----------*/
     .zoneText {
         width: 100%;
         text-align: center;
@@ -60,18 +60,18 @@
         width: 100%;
         margin: 15px;
     }
-    /* footer */
+    /*------------ footer------------ */
     footer {
-        font-size: 10px;
+        font-size: 0.7rem;
     }
     .soc-icons {
-        width: 20%;
+        width: 25%;
     }
-    /* articles */
+    /* ------------pages articles----------- */
     .article {
         min-width: 100%;
     }
-    /* contact */
+    /* -------------contact------------- */
     .containerTrois h1 {
         margin: 50px 0;
     }
@@ -89,17 +89,54 @@
         width: 40%;
         height: 40px;
     }
+    .labelContact {
+        width: 100%;
+    }
+    /* ---------------Creer--------------*/
+    .titrePost {
+        width: 100%;
+    }
+    .blocTitrePost {
+        margin: 0;
+    }
+    .file {
+        width: 100%;
+        margin: 50px 0;
+    }
+    .btnAdmin input {
+        width: 30%;
+    }
+    /* ---------------modifier--------------*/
+    .tableau {
+        width: 100%;
+    }
+    .tableau > table {
+        border: none;
+    }
+    tbody > tr, .hautTableau{
+        font-size: 1rem;
+    }
+    /* ---------------inscription/connexion--------------*/
+    .formInscrip{
+        width: 70%;
+    }
+    /* ---------------modal--------------*/
+    .modal{
+        width: 60%;
+    }
 }
 
+
+
 @media screen and (max-width:992px) {
-    /* header */
+    /* -----------header------------- */
     .menu-principal {
         width: 80%;
     }
     .menu-mobile {
         display: none;
     }
-    /* container */
+    /* ------------container------------ */
     .intro {
         width: 100%;
     }
@@ -109,8 +146,15 @@
     aside h4 {
         margin-top: 50px;
     }
-    /* articles */
-.article{
-    width: 45%;
-}
+    /*------------ articles------------- */
+    .article {
+        width: 45%;
+    }
+    /* ---------------Creer--------------*/
+
+    .file > label {
+        font-size: 1rem;
+    }
+    
+    
 }

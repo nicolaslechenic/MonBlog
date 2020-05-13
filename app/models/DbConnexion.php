@@ -19,7 +19,7 @@ class DbConnexion
 
 
 
-    public function openConnexion()
+    static function openConnexion()
     {
 
 
@@ -77,7 +77,7 @@ class DbConnexion
 
 
     // Fonction qui ferme la connexion à la base de donnée
-    public function closeConnexion()
+    static function closeConnexion()
     {
         return null;
     }

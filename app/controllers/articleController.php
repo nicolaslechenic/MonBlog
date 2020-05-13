@@ -1,6 +1,6 @@
 <?php
 namespace Projet\Controllers;
-namespace Projet\Models;
+
 /*
                                 | -------------------------------ARTICLECONTROLLER--------------------------------- | 
                                 |                                                                                   |
@@ -12,39 +12,44 @@ namespace Projet\Models;
                                 |-----------------------------------------------------------------------------------|
 */
 
-class ArticleController extends ArticleManager{
+class ArticleController{
 
 
 
-//                              |------------------------------------ 1/ Fonction createArticle -----------------------------------|
+//                              |---------------------------- 1/ Fonction createArticle -----------------------------|
 
 
 
 function createArticle(){
-    $article = new Article($_REQUEST['title'],$_REQUEST['content'],$_REQUEST['image'],$_REQUEST['ref_page']);
-    ArticleManager::createArticle($article);
+    $article = new \Projet\Models\Article($_REQUEST['title'],$_REQUEST['content'],$_REQUEST['image'],$_REQUEST['ref_page']);
+    \Projet\Models\ArticleManager::createArticle($article);
+    header('Location: /admin.php?action=ancien');
 }
 
 
 
-//                              |------------------------------------ 2/ Fonction updateArticle -----------------------------------|
+//                              |---------------------------- 2/ Fonction updateArticle -----------------------------|
 
 
 
 function updateArticle(){
-    $article = new Article($_REQUEST['title'],$_REQUEST['content'],$_REQUEST['image'],$_REQUEST['ref_page']);
-    ArticleManager::updateArticle($article);
+    $article = new \Projet\Models\Article($_REQUEST['title'],$_REQUEST['content'],$_REQUEST['image'],$_REQUEST['ref_page']);
+    \Projet\Models\ArticleManager::updateArticle($article);
+    header('Location: /admin.php?action=ancien');
+    
 }
 
 
 
-//                              |------------------------------------ 3/ Fonction deleteArticle -----------------------------------|
+//                              |----------------------------- 3/ Fonction deleteArticle ----------------------------|
 
 
 
 function deleteArticle(){
-    $article = new Article($_REQUEST['title'],$_REQUEST['content'],$_REQUEST['image'],$_REQUEST['ref_page']);
-    ArticleManager::deleteArticle($article);
+    
+    \Projet\Models\ArticleManager::deleteArticle($_GET["id"]);
+    header('Location: /admin.php?action=ancien');
+    
 }
 
 }

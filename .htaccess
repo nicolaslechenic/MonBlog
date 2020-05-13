@@ -1,19 +1,13 @@
-<filesMatch "admin">
-Authname "Page d'administration, veuillez vous identifier"
-Authtype Basic
-AuthUserFile "c:\laragon\www\monBlog\.htpasswd"
-Require valid-user
-</filesMatch>
+##<filesMatch "admin">
+#Authname "Page d'administration, veuillez vous identifier"
+#Authtype Basic
+##AuthUserFile "c:\laragon\www\monBlog\.htpasswd"
+#Require valid-user
+#</filesMatch>
 
 RewriteEngine On
-RewriteRule ^admin$  index.php?page=edit [L]
+RewriteRule ^admin$  admin.php?action=connexion [L]
 
-
-
-
-#redirection vers https
-#RewriteCond %{SERVER_POST}
-#^80$ RewriteRule ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R]
 
 #redirection vers page erreur
 #ErrorDocument 404 /404.php

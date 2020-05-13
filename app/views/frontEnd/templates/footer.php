@@ -1,24 +1,35 @@
-<footer>
-    <p>
-        &copy;2020 Monblog -
-        <a href="#">Tous droits réservés -
-        </a>
-    </p>
-    <p>
-        <a href="#">Site Map</a>
-    </p>
-    <p>
-        <a href='?action=editer'>Se connecter en administrateur</a>
-    </p>
-    <div class="soc-icons">
-        <span>Me suivre:</span>
-        <a href="https://twitter.com/login?lang=fr"><img src="app/public/images/icon-1.jpg" alt="icon"></a>
-        <a href="https://www.facebook.com"><img src="app/public/images/icon-2.jpg" alt="icon"></a>
-    </div>
+<!--  
+                                | ---------------------------------FOOTER ADMIN------------------------------------ | 
+                                |                                                                                   |
+                                |-----------------------------------------------------------------------------------|
+-->
+        <footer>
+            <!-- CGU + Site map -->
+            <p>
+                &copy;2020 Monblog -
+                <a title="CGU" href='?action=cgu'>Conditions générales d'utilisation -</a>
+            </p>
+            <p>
+                <a title="Site Map" href="#">Site Map</a>
+            </p>
+            <p>
+                <a href='admin.php?action=editer'>Se connecter en administrateur</a>
+            </p>
+            <!-- Réseaux sociaux -->
+            <div class="soc-icons">
+                <span>Me suivre:</span>
+                <a title="Twitter" href="https://twitter.com/login?lang=fr">
+                    <img src="app/public/images/icon-1.jpg" alt="icon"></a>
+                <a title="Facebook" href="https://www.facebook.com">
+                    <img src="app/public/images/icon-2.jpg" alt="icon"></a>
+            </div>
         </footer>
-        <script src="app/public/js/active.js"></script>
-        <script src="app/public/js/creds.js"></script>
-        <script src="app/public/js/meteo.js"></script>
-
+            <!-- scripts js -->
+            <script src="app/public/js/plugin.js"></script>
+            <script src="app/public/js/active.js"></script>
+            <script src="app/public/js/creds.js"></script>
+            <script src="app/public/js/meteo.js"></script>
+            <script src="app/public/js/btnTop.js"></script>
+            <script src="app/public/js/modal.js"></script>
     </body>
 </html>

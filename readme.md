@@ -1,7 +1,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/d4c152d0105862bb97b0/maintainability)](https://codeclimate.com/github/Slemaitre56/MonBlog/maintainability)
 
-![Image description](app\public\images\Capture.PNG)
+![Image description](https://github.com/monBlog/app/public/images/Capture.PNG)
 
 
 # Mon blog (Examen Kercode)

@@ -7,8 +7,10 @@ namespace Projet\Controllers;
                                 |                             2/ Fonction austra                                    |
                                 |                             3/ Fonction nZ                                        |   
                                 |                             4/ Fonction trucs                                     | 
-                                |                             4/ Fonction contact                                   | 
-                                |                             4/ Fonction article                                   |
+                                |                             5/ Fonction contact                                   | 
+                                |                             6/ Fonction article                                   |
+                                |                             7/ Fonction Form                                      |
+                                |                             8/ Fonction CGU                                       |
                                 |                                                                                   |                                                              
                                 |-----------------------------------------------------------------------------------|
 */
@@ -23,7 +25,7 @@ class Controller{
 
 
     function accueil() {     
-        require "app/views/frontEnd/pages/accueil.php";
+        require "./app/views/frontEnd/pages/accueil.php";
     }
 
 
@@ -36,12 +38,11 @@ class Controller{
         $articleManager = new \Projet\Models\ArticleManager();
         $articlesList = $articleManager->readArticles($_REQUEST['action']);
         
-        $commentaireManager = new \Projet\Models\CommentaireManager();
-        $commentairesList = $commentaireManager->readCommentaires($_REQUEST['action']);
+        $commentManager = new \Projet\Models\CommentManager();
+        $commentsList = $commentManager->readComments($_REQUEST['action']);
         
-        require "app/views/frontEnd/pages/australie.php";
-        return $articlesList;
-        return $commentairesList;
+        require "./app/views/frontEnd/pages/australie.php";
+        
     }
 
 
@@ -54,12 +55,11 @@ class Controller{
         $articleManager = new \Projet\Models\ArticleManager();
         $articlesList = $articleManager->readArticles($_REQUEST['action']);
 
-        $commentaireManager = new \Projet\Models\CommentaireManager();
-        $commentairesList = $commentaireManager->readCommentaires($_REQUEST['action']);
+        $commentManager = new \Projet\Models\CommentManager();
+        $commentsList = $commentManager->readComments($_REQUEST['action']);
 
-        require "app/views/frontEnd/pages/n-Zelande.php";
-        return $articlesList;
-        return $commentairesList;
+        require "./app/views/frontEnd/pages/n-Zelande.php";
+        
     }
 
 
@@ -72,12 +72,11 @@ class Controller{
         $articleManager = new \Projet\Models\ArticleManager();
         $articlesList = $articleManager->readArticles($_REQUEST['action']);
 
-        $commentaireManager = new \Projet\Models\CommentaireManager();
-        $commentairesList = $commentaireManager->readCommentaires($_REQUEST['action']);
+        $commentManager = new \Projet\Models\CommentManager();
+        $commentsList = $commentManager->readComments($_REQUEST['action']);
 
-        require "app/views/frontEnd/pages/trucs.php";
-        return $articlesList;
-        return $commentairesList;
+        require "./app/views/frontEnd/pages/trucs.php";
+        
     }
     
     
@@ -87,7 +86,7 @@ class Controller{
 
 
     function contact() {
-        require "app/views/frontEnd/pages/contact.php";
+        require "./app/views/frontEnd/pages/contact.php";
     
     }
 
@@ -99,15 +98,44 @@ class Controller{
 
     function article() {
         $articleManager = new \Projet\Models\ArticleManager();
-        $articlesList = $articleManager->readOneArticle();
+        $article = $articleManager->readOneArticle();
 
-        $commentaireManager = new \Projet\Models\CommentaireManager();
-        $commentairesList = $commentaireManager->readCommentaires($_REQUEST['action']);
+        $commentManager = new \Projet\Models\CommentManager();
+        $commentsList = $commentManager->readComments($_REQUEST['action']);
 
-        require "app/views/frontEnd/pages/article.php";
-        return $articlesList;
-        return $commentairesList;
+        require "./app/views/frontEnd/pages/article.php";
+        
     }
+
+
+//                              |-------------------------------- 7/ Fonction Formulaire -----------------------------|    
+
+
+
+    function form(){
+        $formManager = new \Projet\Models\FormManager();
+        $contact = $formManager->contact();
+        
+    }
+
+    
+
+//                              |----------------------------------- 8/ Fonction CGU ---------------------------------|
+
+
+
+    function cgu(){
+        require "./app/views/frontEnd/pages/cgu.php"; 
+    }
+
+
+
+//                              |----------------------------------- 9/ Fonction cookie ---------------------------------|
+
+    function cookie(){
+        require "./app/views/frontEnd/cookie/cookie.php"; 
+    }
+
 
 }
 

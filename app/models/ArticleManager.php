@@ -1,7 +1,7 @@
 <?php
 namespace Projet\Models;
 /*
-                                | -------------------------------CLASS ARTICLEMANAGER------------------------------ | 
+                                | -----------------------------------ARTICLEMANAGER-------------------------------- | 
                                 |                                                                                   |
                                 |                             1/ Fonction createArticle                             |
                                 |                             2/ Fonction readArticles                              |
@@ -17,13 +17,14 @@ namespace Projet\Models;
 class ArticleManager extends DbConnexion
 {
 
+    
 
 //                              |--------------------------- 1/ Fonction createArticle -----------------------------|
 
 
 
 // Fonction créer un article via la class Article
-    function createArticle(Article $article): Article
+    static function createArticle(Article $article): Article
     {
         // Pour créer un article
         // On se connecte à la base de donnée
@@ -41,6 +42,7 @@ class ArticleManager extends DbConnexion
         $lastId = $db->lastInsertId();
 
         $article->setId($lastId);
+        
         $db = DbConnexion::closeConnexion();
 
         return $article;
@@ -98,7 +100,7 @@ class ArticleManager extends DbConnexion
 
 
 // Fonction afficher un seul article
-    function readOneArticle() : array
+    static function readOneArticle()
 
     {
         // On se connecte à la base de donnée
@@ -124,7 +126,7 @@ class ArticleManager extends DbConnexion
         
         $db = DbConnexion::closeConnexion();
 
-        return $articlesList;
+        return $article;
     }
 
 
@@ -177,7 +179,7 @@ class ArticleManager extends DbConnexion
 
 
 // Fonction mettre à jour un article via la class Article
-    function updateArticle(Article $article): Article
+    static function updateArticle(Article $article): Article
     {
         // On se connecte à la base de donnée
         $db = DbConnexion::openConnexion();
@@ -202,14 +204,14 @@ class ArticleManager extends DbConnexion
 
 
 // Fonction supprimer un article via la class Article
-    function deleteArticle(Article $article): Article
+    static function deleteArticle(int $id) : void
     {
         // On se connecte à la base de donnée
         $db = DbConnexion::openConnexion();
 
         // On supprime un article avec son id
         $request = "DELETE FROM article WHERE id =:id";
-        $params= array("id"=>$_GET['id']);
+        $params= array("id"=>$id);
 
         // On prépare et exécute la requête
         $stmt = $db->prepare($request);
@@ -217,7 +219,8 @@ class ArticleManager extends DbConnexion
 
         $db = DbConnexion::closeConnexion();
 
-        return $article;
+        
+        
     }
 }
 

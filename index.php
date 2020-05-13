@@ -1,4 +1,5 @@
 <?php
+
 /*
                                 | -----------------------------------ROUTEUR MVC----------------------------------- | 
                                 |                                                                                   |                                                                                                                                       
@@ -38,8 +39,8 @@ require_once __DIR__. "/vendor/autoload.php";
 // try = bloc qui contient du code pouvant générer des erreurs
     try {
         $controller = new \Projet\Controllers\Controller();
-        $controllerAdmin = new \Projet\Controllers\ControllerAdmin();
-
+        $controllerComment = new \Projet\Controllers\CommentController();
+        
 
 // isset = diferent de nul
     if(isset($_GET["action"])){
@@ -55,13 +56,25 @@ require_once __DIR__. "/vendor/autoload.php";
             $controller->contact();
         }elseif($_GET["action"] == "article"){
             $controller->article();
-        }elseif($_GET["action"] == "editer"){
-            $controllerAdmin->editer();
-        }elseif($_GET["action"] == "poster"){
-            $controllerAdmin->ancien();
+        }elseif($_GET["action"] == "form"){
+            $controller->form();
+        }elseif($_GET["action"] == "cgu"){
+            $controller->cgu();
+        }elseif($_GET["action"] == "cookie"){
+            $controller->cookie();
         }
+        
+        
+        
+        elseif($_GET["action"] == "newComment"){
+            $controllerComment->newComment();
+        }
+
+
+
     }else{
         $controller->accueil();
+        
     }
 
 
