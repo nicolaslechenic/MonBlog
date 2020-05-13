@@ -9,7 +9,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mon blog Austra-Zelandia</title>     
+        <title><?= $title ?></title>     
         
          <!-- Réfèrencement -->
          <meta name="keywords" content="blog voyage">
@@ -36,7 +36,7 @@
         <!-- bouton pour remonter -->
         <button onclick="topFunction()" id="myBtn" title="Vers le haut de la page">^</button>
          <!-- SVG plugin -->
-         <div class="cursor">
+        <div class="cursor">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                 <path
                     style="fill:#B38A82;"

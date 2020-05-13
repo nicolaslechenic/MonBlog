@@ -29,12 +29,9 @@ class AdminManager extends DbConnexion
         // Pour créer un article
         // On se connecte à la base de donnée
         $db = DbConnexion::openConnexion();
-        
-        
-        
         // On insére dans la table 'article' le titre, l'image, la date de création, la date de mise à jour, le contenu, la ref-page 
         $request = "INSERT INTO admin (pseudo, email, password) VALUES ";
-        $request .= '( "' . $connexion->getPseudo() . '", "' . $connexion->getEmail() . '","' . password_hash($connexion->getPassword, PASSWORD_DEFAULT) . '");';
+        $request .= '( "' . $connexion->getPseudo() . '", "' . $connexion->getEmail() . '","' . password_hash($connexion->getPassword(), PASSWORD_DEFAULT) . '");';
         
         // On prépare et exécute la requête
         $stmt = $db->prepare($request);
@@ -51,19 +48,15 @@ class AdminManager extends DbConnexion
         $db = DbConnexion::openConnexion();
         if(!empty($pseudo) && !empty($passwd)){
             $login = $db->prepare('SELECT id, pseudo, password FROM admin WHERE pseudo =?');
-            $login->bindParam(1, $pseudo);
-            $login->execute();
+            $login->execute([$pseudo]);
             $login = $login->fetch();
-            var_dump($login);
-            var_dump($passwd);
-            var_dump(password_verify($passwd, $login['password']));
               if(password_verify($passwd, $login['password'])){
                 header("location: admin.php?action=editer");
               }else{
-                echo " Le pseudo et le mot de passe sont érronés";                           
+                return " Le pseudo et le mot de passe sont érronés";                           
               }
         }else{
-            echo "Tous les champs sont obligatoires";
+           return "Tous les champs sont obligatoires";
         }
         
     }

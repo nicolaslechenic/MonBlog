@@ -83,9 +83,8 @@ class AdminController
         $pseudo = $_POST["pseudo"];
         $passwd = $_POST["password"];
             
-        $objet = new \Projet\Models\AdminManager();
-        $objet->login($pseudo, $passwd);
-        
+        $objet = new \Projet\Models\AdminManager();      
+        $error = $objet->login($pseudo, $passwd);
         }        
             
         require "./app/views/backOffice/login.php";

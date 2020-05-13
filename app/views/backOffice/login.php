@@ -12,6 +12,12 @@
     <!-- Affiche les messages d'erreurs voir FormulaireManager-->
       
     <h1 class="titreInscrip">Connectez-vous</h1>
+    <div class="alert">
+    <?php 
+    if(!empty($error)){
+        echo $error;
+    }?>
+    </div>
     <!-- Formulaire pour se connecter au compte Admin -->
     <form class="formInscrip" action="admin.php?action=connexion" method="POST">
         <!-- Pseudo -->

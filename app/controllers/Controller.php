@@ -24,7 +24,8 @@ class Controller{
 
 
 
-    function accueil() {     
+    function accueil() { 
+        $title = "Mon blog Austra-Zelandia ";   
         require "./app/views/frontEnd/pages/accueil.php";
     }
 
