@@ -49,7 +49,7 @@ class AdminManager extends DbConnexion
 
     static function login($pseudo, $passwd){
         $db = DbConnexion::openConnexion();
-        if(!empty($pseudo) && !empty($passwd)){
+        if(isset($pseudo) && isset($passwd)){
             $login = $db->prepare('SELECT id, pseudo, password FROM admin WHERE pseudo =?');
             $login->execute([$pseudo]);
             $login = $login->fetch();
@@ -59,8 +59,6 @@ class AdminManager extends DbConnexion
               }else{
                 return " Le pseudo et le mot de passe sont erronés";                           
               }
-        }else{
-           return "Tous les champs sont obligatoires";
         }
         
     }

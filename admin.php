@@ -42,7 +42,6 @@ require_once __DIR__. "/vendor/autoload.php";
         $controllerAdmin = new \Projet\Controllers\AdminController();
         $controllerArticle = new \Projet\Controllers\ArticleController();
        
-
 // isset = différent de nul
     if(isset($_GET["action"])){
         if($_GET["action"] == "connexion"){
@@ -57,9 +56,7 @@ require_once __DIR__. "/vendor/autoload.php";
             $controllerAdmin->delete();
         }elseif($_GET["action"] == "inscription"){
             $controllerAdmin->register();
-        }
-        
-        elseif($_GET["action"] == "create"){
+        }elseif($_GET["action"] == "create"){
             $controllerArticle->createArticle();
         }elseif($_GET["action"] == "update"){
             $controllerArticle->updateArticle();
@@ -68,15 +65,8 @@ require_once __DIR__. "/vendor/autoload.php";
         }elseif($_GET["action"] == "logout"){
             $controllerAdmin->logoutAdmin();
         }
-         
-
-       
-
-
-
     }else{
-        $controllerAdmin->login();
-        
+        $controllerAdmin->loginAdmin();        
     }
 
 

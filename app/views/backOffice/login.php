@@ -23,12 +23,12 @@
         <!-- Pseudo -->
         <div class="inscrip">
             <label for="pseudo">Pseudo : </label>          
-            <input type="text" name="pseudo" >
+            <input type="text" name="pseudo" required>
         </div>
         <!-- Mot de passe -->           
         <div class="inscrip">
             <label for="password">Mot de passe :</label>           
-            <input type="password" name="password"  >
+            <input type="password" name="password" required>
         </div>        
         <button type="submit" >Se connecter</button>
     </form>
