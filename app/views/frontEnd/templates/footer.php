@@ -12,9 +12,7 @@
             <p>
                 <a title="Site Map" href="#">Site Map</a>
             </p>
-            <p>
-                <a href='admin.php?action=editer'>Se connecter en administrateur</a>
-            </p>
+
             <!-- Réseaux sociaux -->
             <div class="soc-icons">
                 <span>Me suivre:</span>

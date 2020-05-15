@@ -65,11 +65,9 @@ require_once __DIR__. "/vendor/autoload.php";
             $controllerArticle->updateArticle();
         }elseif($_GET["action"] == "delete"){
             $controllerArticle->deleteArticle();
+        }elseif($_GET["action"] == "logout"){
+            $controllerAdmin->logoutAdmin();
         }
-
-        // elseif($_GET["action"] == "newAdmin"){
-        //     $controllerAdmin->newCompteAdmin();
-        // }
          
 
        

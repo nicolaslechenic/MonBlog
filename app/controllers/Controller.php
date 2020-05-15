@@ -25,7 +25,9 @@ class Controller{
 
 
     function accueil() { 
-        $title = "Mon blog Austra-Zelandia ";   
+        $title = "Mon blog Austra-Zelandia ";
+        $description = "Bienvenue sur le blog sur mon voyage en Australie et en Nouvelle-Zelande !";   
+        
         require "./app/views/frontEnd/pages/accueil.php";
     }
 
@@ -36,6 +38,9 @@ class Controller{
 
 
     function austra() {
+        $title = "Mon blog Austra-Zelandia - Australie ";
+        $description = "Vous trouverez ici tous mes articles sur l'Australie ! De notre arrivée, à la découverte des kangouroux sauvages !"; 
+        
         $articleManager = new \Projet\Models\ArticleManager();
         $articlesList = $articleManager->readArticles($_REQUEST['action']);
         
@@ -53,6 +58,9 @@ class Controller{
 
 
     function nZ() {
+        $title = "Mon blog Austra-Zelandia - Nouvette-Zelande ";
+        $description = "Vous trouverez ici tous mes articles sur la Nouvelle-Zélande ! Des montagnes des seigneurs des anneaux aux champs remplit de moutons !";
+        
         $articleManager = new \Projet\Models\ArticleManager();
         $articlesList = $articleManager->readArticles($_REQUEST['action']);
 
@@ -70,6 +78,9 @@ class Controller{
 
 
     function trucs() {
+        $title = "Mon blog Austra-Zelandia - Trucs et astuces ";
+        $description = "Vous trouverez ici tous mes articles sur les trucs et astuces pour ce voyages ! Le permis ? Les valises ? La trousse de pharmacie ?";
+        
         $articleManager = new \Projet\Models\ArticleManager();
         $articlesList = $articleManager->readArticles($_REQUEST['action']);
 
@@ -87,6 +98,9 @@ class Controller{
 
 
     function contact() {
+        $title = "Mon blog Austra-Zelandia - Contact ";
+        $description = "Vous trouverez ici tous mes articles sur l'Australie !";
+
         require "./app/views/frontEnd/pages/contact.php";
     
     }
@@ -98,6 +112,9 @@ class Controller{
 
 
     function article() {
+        $title = "Mon blog Austra-Zelandia - Article ";
+        $description = "Vous trouverez ici tous mes articles !";
+
         $articleManager = new \Projet\Models\ArticleManager();
         $article = $articleManager->readOneArticle();
 

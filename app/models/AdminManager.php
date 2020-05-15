@@ -3,12 +3,9 @@ namespace Projet\Models;
 /*
                                 | ------------------------------------ADMINMANAGER--------------------------------- | 
                                 |                                                                                   |
-                                |                             1/ Fonction createArticle                             |
-                                |                             2/ Fonction readArticles                              |
-                                |                             3/ Fonction readOneArticle                            |
-                                |                             4/ Fonction readAllArticles                           |
-                                |                             5/ Fonction updateArticle                             |
-                                |                             6/ Fonction deleteArticle                             |                                
+                                |                             1/ Fonction createCompte                              |
+                                |                             2/ Fonction login                                     |
+                                |                             3/ Fonction logout                                    |                               
                                 |                                                                                   |
                                 |-----------------------------------------------------------------------------------|
 */
@@ -19,7 +16,7 @@ class AdminManager extends DbConnexion
 
     
 
-//                              |--------------------------- 1/ Fonction createArticle -----------------------------|
+//                              |--------------------------- 1/ Fonction createCompte -----------------------------|
 
 
 
@@ -43,17 +40,24 @@ class AdminManager extends DbConnexion
         
     }
 
-    
-    public function login($pseudo, $passwd){
+
+ 
+//                              |------------------------------- 2/ Fonction login --------------------------------|
+
+
+
+
+    static function login($pseudo, $passwd){
         $db = DbConnexion::openConnexion();
         if(!empty($pseudo) && !empty($passwd)){
             $login = $db->prepare('SELECT id, pseudo, password FROM admin WHERE pseudo =?');
             $login->execute([$pseudo]);
             $login = $login->fetch();
               if(password_verify($passwd, $login['password'])){
+                $_SESSION['pseudo'] = $login['id'];  
                 header("location: admin.php?action=editer");
               }else{
-                return " Le pseudo et le mot de passe sont érronés";                           
+                return " Le pseudo et le mot de passe sont erronés";                           
               }
         }else{
            return "Tous les champs sont obligatoires";
@@ -61,27 +65,20 @@ class AdminManager extends DbConnexion
         
     }
     
-    function logout(){
-        unset($_SESSION['user']);
+
+
+
+//                              |------------------------------ 3/ Fonction logout ---------------------------------|
+
+
+
+    static function logout(){
+        unset($_SESSION['pseudo']);
         session_destroy();
-        header("Location: connexion.php");
+        
     }
 
-
-    static function loginAdmin(){
-        $db = DbConnexion::openConnexion();
-        extract($_POST);
-        $errors = 'Cela ne correspond pas à un compte valide';
-        $login = $db->prepare('SELECT id, password FROM admin WHERE pseudo = ?');
-        $login->execute($_POST['pseudo']);
-        $login = $login->fetch();
-        if(password_verify($password, $login['password'])){
-            $_SESSION['user'] = $login['id'];
-            header("Location: compte.php");
-        }
-        else{
-            return $errors;
-        }
-    }
+   
+     
 }
 

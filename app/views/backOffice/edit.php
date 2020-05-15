@@ -10,6 +10,7 @@
 
 <!-- MAIN -->
 <main class="container">
+    
     <h1 class="titreAdmin">Nouvel article</h1>
     <!-- Formulaire pour créer un nouvel article -->
     <form class="formAdmin" action="admin.php?action=create" method="POST">

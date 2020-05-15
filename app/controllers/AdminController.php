@@ -28,6 +28,9 @@ class AdminController
 
     public function edit()
     {
+        $title = "Administration - Editer un article ";
+        $description = "Sur cette page vous pouvez créer un noubelle article !";
+
         require "app/views/backOffice/edit.php";
     }
 
@@ -39,6 +42,9 @@ class AdminController
 
     public function update()
     {
+        $title = "Administration - Modifier un article ";
+        $description = "Sur cette page vous pouvez modifier un article !";
+
         $articleManager = new \Projet\Models\ArticleManager();
         $article = $articleManager->readOneArticle();
 
@@ -53,6 +59,9 @@ class AdminController
 
     public function listArticles()
     {
+        $title = "Administration - Trouver un article ";
+        $description = "Sur cette page vous trouverez la liste de tous les articles publiés !";
+
         $articleManager = new \Projet\Models\ArticleManager();
         $articlesAllList = $articleManager->readAllArticles();
 
@@ -68,6 +77,9 @@ class AdminController
 
     public function delete()
     {
+        $title = "Administration - Supprimer un article ";
+        $description = "Sur cette page vous pouvez supprimer un article !";
+
         require "./app/views/backOffice/delete.php";
     }
 
@@ -79,6 +91,8 @@ class AdminController
 
     public function loginAdmin()
     {
+        $title = "Administration - Se connecter ";
+        $description = "Sur cette page vous pouvez vous connecter en tant qu'administrateur";
         if(!empty($_POST)){
         $pseudo = $_POST["pseudo"];
         $passwd = $_POST["password"];
@@ -98,6 +112,8 @@ class AdminController
 
     public function register()
     {
+        $title = "Administration - S'inscrire ";
+        $description = "Sur cette page vous pourvez vous inscrire pour devenir administrateur !";
         if(!empty($_POST)){
             $connexion = new \Projet\Models\Connexion($_REQUEST['pseudo'], $_REQUEST['email'], $_REQUEST['password']);
             \Projet\Models\AdminManager::createCompte($connexion);
@@ -113,7 +129,12 @@ class AdminController
 //                              |----------------------------- 7/ Fonction compteAdmin -----------------------------|
 
 
-
+public function logoutAdmin()
+{
+    \Projet\Models\AdminManager::logout();
+    header("Location: index.php?action=accueil");
+ 
+}
       
     
     

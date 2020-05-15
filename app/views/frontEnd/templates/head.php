@@ -12,10 +12,10 @@
         <title><?= $title ?></title>     
         
          <!-- Réfèrencement -->
-         <meta name="keywords" content="blog voyage">
+         <meta name="keywords" content="Blog Voyage Australie Nouvelle-Zelande">
          <meta
              name="description"
-             content="Bienvenue sur mon blog Austra-Zelandia ! Venez partager avec moi mes étapes dans ce voyages !">
+             content=<?= $description ?>>
 
          <!--Feuilles de styles-->
          <link rel="stylesheet" href="./app/public/css/style.css">

@@ -1,7 +1,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/d4c152d0105862bb97b0/maintainability)](https://codeclimate.com/github/Slemaitre56/MonBlog/maintainability)
 
-![Image description](https://github.com/monBlog/app/public/images/Capture.PNG)
+![Image description](./app/public/images/Capture.PNG)
 
 
 # Mon blog (Examen Kercode)
@@ -39,7 +39,12 @@ Sujet : Simple blog proposant :
 
 ### UTILISATION : 
 
-Usage classique et simple.
+Usage classique et simple du blog.
+* Faire un git clone ou directement télècharger le dossier
+* La base de donnée est dans le dossier database.
+* Vous pouvez acceder à la partie admin en faisant : base de url /admin
+* Une fois sur la page de connexion : admin / admin56
+* Vous pouvez créer, modifier, supprimer un article.
               
 Utilisation de code climate
 
@@ -48,9 +53,6 @@ Utilisation de code climate
 
 1.0 2020
 
-### DOCUMENTATION : 
-
-Aucune
 
 ### CONTRIBUTION : 
 
