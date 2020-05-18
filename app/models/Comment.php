@@ -27,7 +27,7 @@ class Comment{
     private $creationDate;
     private $updateDate;
     private $content;
-    private $refPage;
+    private $articleId;
 
 
 
@@ -40,12 +40,12 @@ class Comment{
  public = visiblité totale des éléments
 */ 
 
-    public function __construct($userPseudo, $content, $refPage)
+    public function __construct($userPseudo, $content)
     {
 
         $this->setUserPseudo($userPseudo);
         $this->setContent($content);
-        $this->setRefPage($refPage);
+        
 
         $now = date_create();
 
@@ -123,15 +123,15 @@ class Comment{
         return $this;
     }
 
-    // getter/setter ref_page
-    public function getRefPage()
+    // getter/setter article_id
+    public function getArticleId()
     {
-        return $this->refPage;
+        return $this->articleId;
     }
 
-    public function setRefPage($refPage)
+    public function setArticleId($articleId)
     {
-        $this->refPage = $refPage;
+        $this->articleId = $articleId;
         return $this;
     }
 }

@@ -28,9 +28,9 @@ class CommentManager extends DbConnexion
         // On se connecte à la base de donnée
         $db = DbConnexion::openConnexion();
 
-        // On insére dans la table commentaire le pseudo, la date de création, la date de mise à jour, la ref_page
-        $request = "INSERT INTO commentaire (user_pseudo, creation_date, update_date, content, ref_page) VALUES ";
-        $request .= '( "' . $comment->getUserPseudo() . '", "' . $comment->getCreationDate() . '", "' . $comment->getUpdateDate() . '", "' . $comment->getContent() . '", "' . $comment->getRefPage() . '");';
+        // On insére dans la table commentaire le pseudo, la date de création, la date de mise à jour, le article_id
+        $request = "INSERT INTO commentaire (user_pseudo, creation_date, update_date, content, article_id) VALUES ";
+        $request .= '( "' . $comment->getUserPseudo() . '", "' . $comment->getCreationDate() . '", "' . $comment->getUpdateDate() . '", "' . $comment->getContent() . '", "' . $comment->getArticleId() . '");';
         
         // On prépare et exécute la requête
         $stmt = $db->prepare($request);
@@ -52,8 +52,8 @@ class CommentManager extends DbConnexion
 
 
 
-// Fonction afficher un/des commentaire/s par rapport à la page(ref_page)
-    function readComments(string $pageName): array
+// Fonction afficher un/des commentaire/s par rapport à la page(article_id)
+    function readComments(): array
     {
         // On se connecte à la base de donnée
         $db = DbConnexion::openConnexion();
@@ -62,7 +62,7 @@ class CommentManager extends DbConnexion
         // On le stoocke dans un tableau
         $commentsList = [];
 
-        $request = "SELECT * FROM commentaire WHERE ref_page like'" . $pageName . "';" ;
+        $request = "SELECT * FROM commentaire WHERE article_id ";
 
         // On prépare et exécute la requête
         $stmt = $db->prepare($request);
@@ -75,7 +75,7 @@ class CommentManager extends DbConnexion
 
         while ($commentsFromDb = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             // On instancie Commentaire
-            $comment = new Comment($commentsFromDb['user_pseudo'],$commentsFromDb['content'],$commentsFromDb['ref_page']);
+            $comment = new Comment($commentsFromDb['user_pseudo'],$commentsFromDb['content'],$commentsFromDb['article_id']);
             $comment->setId($commentsFromDb['id']);
             $comment->setCreationDate($commentsFromDb['creation_date']);
             $comment->setUpdateDate($commentsFromDb['update_date']);

@@ -19,7 +19,7 @@
                 <!-- Menu principal -->
                     <ul id="menuActive" class="liens-nav">
                         <li class="nav">
-                            <a title="Créer un nouvel Article" href='admin.php?action=creer'> Nouvel article
+                            <a title="Créer un nouvel Article" href='admin.php?action=editer'> Nouvel article
                             </a>
                         </li>
                         <li class="nav">

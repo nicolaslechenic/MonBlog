@@ -13,8 +13,6 @@
             <!-- Commentaire -->
             <textarea id="commentaire" name="content" rows="10" cols="30" required="required"></textarea>
             </label>
-            <!-- Refpage -->
-            <input type=hidden name="ref_page" value="<?= $_REQUEST["action"] ?>"/>     
             <input class="btnCommentaire" type="Submit" name="submit" value="Envoyer un commentaire"/>
     </form>
                     

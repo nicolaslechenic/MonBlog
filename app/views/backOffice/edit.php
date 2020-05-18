@@ -1,5 +1,5 @@
 <!--  
-                                | ---------------------------------CREER ADMIN------------------------------------- | 
+                                | ---------------------------------EDIT ADMIN------------------------------------- | 
                                 |                                                                                   |
                                 |-----------------------------------------------------------------------------------|
 -->
@@ -26,7 +26,7 @@
             <div class="file">
                 <label for="file">
                     Insérer une image :</label>
-                <input type="file" name="image" required="required">
+                <input type="file" accept="image/*" name="image" required="required">
             </div>
         </div>
         <div class="messagePost">

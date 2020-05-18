@@ -219,8 +219,8 @@ class ArticleManager extends DbConnexion
 
         $db = DbConnexion::closeConnexion();
 
-        
-        
+           
     }
+
 }
 

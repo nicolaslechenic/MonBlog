@@ -150,6 +150,7 @@ class Controller{
 
 //                              |----------------------------------- 9/ Fonction cookie ---------------------------------|
 
+
     function cookie(){
         require "./app/views/frontEnd/cookie/cookie.php"; 
     }
