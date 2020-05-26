@@ -21,10 +21,10 @@ class CommentController {
 
 
 function newComment(){
-    $comment = new \Projet\Models\Comment($_REQUEST['user_pseudo'],$_REQUEST['content']);
+    $comment = new \Projet\Models\Comment($_REQUEST['user_pseudo'],$_REQUEST['content'],$_REQUEST['articleId']);
     var_dump($comment);
     \Projet\Models\CommentManager::createComment($comment);
-    header('Location: index.php?action='.$comment->getArticleId());
+    header('Location: index.php?action=article&id='.$comment->getArticleId());
 
 
 }

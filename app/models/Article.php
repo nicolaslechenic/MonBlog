@@ -90,7 +90,7 @@ public function __construct($title, $content, $image, $refPage)
     }
 
     // getter/setter image
-    public function getImage()
+    public function getImage() 
     {
         return $this->image;
     }

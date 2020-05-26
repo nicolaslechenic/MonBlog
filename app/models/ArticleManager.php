@@ -9,7 +9,7 @@ namespace Projet\Models;
                                 |                             4/ Fonction readAllArticles                           |
                                 |                             5/ Fonction updateArticle                             |
                                 |                             6/ Fonction deleteArticle                             |                                
-                                |                                                                                   |
+                                |                             7/ Fonction addImage                                  |
                                 |-----------------------------------------------------------------------------------|
 */
 
@@ -23,30 +23,16 @@ class ArticleManager extends DbConnexion
 
 
 
-// Fonction créer un article via la class Article
-    static function createArticle(Article $article): Article
-    {
-        // Pour créer un article
-        // On se connecte à la base de donnée
-        $db = DbConnexion::openConnexion();
-        
-        // On insére dans la table 'article' le titre, l'image, la date de création, la date de mise à jour, le contenu, la ref-page 
-        $request = "INSERT INTO article (title, image, creation_date, update_date, content, ref_page) VALUES ";
-        $request .= '( "' . $article->getTitle() . '", "' . $article->getImage() . '","' . $article->getCreationDate() . '", "' . $article->getUpdateDate() . '", "' . $article->getContent() . '", "' . $article->getRefPage() . '");';
-        
-        // On prépare et exécute la requête
-        $stmt = $db->prepare($request);
-        $stmt->execute();
-
-        // On insére dans la variable $lastId l'identifiant de la dernière valeur
-        $lastId = $db->lastInsertId();
-
-        $article->setId($lastId);
-        
-        $db = DbConnexion::closeConnexion();
-
-        return $article;
+    // Fonction créer un article via la class Article
+   public static function createArticle(Article $article)
+   {
+    $errors = [];
+    $error = ArticleManager::addImage($article, "create");
+    if($error){
+        array_push($errors, $error);
     }
+    return $errors;
+}
 
 
 
@@ -54,15 +40,15 @@ class ArticleManager extends DbConnexion
 
 
 
-// Fonction afficher un/des article/s par rapport à la page(ref_page)
-    function readArticles($pageName): array
+    // Fonction afficher un/des article/s par rapport à la page(ref_page)
+    public function readArticles($pageName): array
     {
         // On se connecte à la base de donnée
         $db = DbConnexion::openConnexion();
-        /* 
+        /*
          Après avoir tout sélectionné selectionné dans la table article
-         On le stoocke dans un tableau 
-        */ 
+         On le stoocke dans un tableau
+        */
         $articlesList = [];
 
         // On séléctionne tout dans la table article dans la colonne ref_pag = $pageName
@@ -74,13 +60,13 @@ class ArticleManager extends DbConnexion
 
         /*
          On crée une boucle tant que ...
-         FETCH-ASSOC = mode de récupération de données qui retourne un tableau indéxé par colonne 
+         FETCH-ASSOC = mode de récupération de données qui retourne un tableau indéxé par colonne
          Ne permet pas d'appeler plusieurs colonnes du même nom
         */
 
-        while ($articlesFromDb = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+        while($articlesFromDb = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             // On instancie un nouvel article
-            $article = new Article($articlesFromDb['title'],$articlesFromDb['content'],$articlesFromDb['image'],$articlesFromDb['ref_page']);
+            $article = new Article($articlesFromDb['title'], $articlesFromDb['content'], $articlesFromDb['image'], $articlesFromDb['ref_page']);
             $article->setId($articlesFromDb['id']);
             $article->setCreationDate($articlesFromDb['creation_date']);
             $article->setUpdateDate($articlesFromDb['update_date']);
@@ -99,14 +85,13 @@ class ArticleManager extends DbConnexion
 
 
 
-// Fonction afficher un seul article
-    static function readOneArticle()
-
+    // Fonction afficher un seul article
+    public static function readOneArticle()
     {
         // On se connecte à la base de donnée
         $db = DbConnexion::openConnexion();
         // Après avoir tout sélectionné selectionné dans la table article
-        // On le stoocke dans un tableau 
+        // On le stoocke dans un tableau
         $articlesList = [];
 
         $request = "SELECT * FROM article WHERE id=:id";
@@ -117,12 +102,12 @@ class ArticleManager extends DbConnexion
         $stmt->execute($params);
         $articleFromDb = $stmt->fetch();
         // On instancie un nouvel article
-            $article = new Article($articleFromDb['title'],$articleFromDb['content'],$articleFromDb['image'],$articleFromDb['ref_page']);
-            $article->setId($articleFromDb['id']);
-            $article->setCreationDate($articleFromDb['creation_date']);
-            $article->setUpdateDate($articleFromDb['update_date']);
+        $article = new Article($articleFromDb['title'], $articleFromDb['content'], $articleFromDb['image'], $articleFromDb['ref_page']);
+        $article->setId($articleFromDb['id']);
+        $article->setCreationDate($articleFromDb['creation_date']);
+        $article->setUpdateDate($articleFromDb['update_date']);
 
-            $articlesList [] = $article;
+        $articlesList [] = $article;
         
         $db = DbConnexion::closeConnexion();
 
@@ -135,14 +120,14 @@ class ArticleManager extends DbConnexion
 
 
 
-// Fonction afficher tous les articles
-    function readAllArticles(): array
+    // Fonction afficher tous les articles
+    public function readAllArticles(): array
     {
         // On se connecte à la base de donnée
         $db = DbConnexion::openConnexion();
 
         // Après avoir tout sélectionné dans la table article
-        // On le stoocke dans un tableau 
+        // On le stoocke dans un tableau
         $articlesAllList = [];
 
         // On séléctionne tout dans la table article
@@ -154,12 +139,12 @@ class ArticleManager extends DbConnexion
 
         /*
          On crée une boucle tant que ...
-         FETCH-ASSOC = mode de récupération de données qui retourne un tableau indéxé par colonne 
+         FETCH-ASSOC = mode de récupération de données qui retourne un tableau indéxé par colonne
          Ne permet pas d'appeler plusieurs colonnes du même nom
         */
         while ($articlesFromDb = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             // On instancie un nouvel article
-            $articleAll = new Article($articlesFromDb['title'],$articlesFromDb['content'],$articlesFromDb['image'],$articlesFromDb['ref_page']);
+            $articleAll = new Article($articlesFromDb['title'], $articlesFromDb['content'], $articlesFromDb['image'], $articlesFromDb['ref_page']);
             $articleAll->setId($articlesFromDb['id']);
             $articleAll->setCreationDate($articlesFromDb['creation_date']);
             $articleAll->setUpdateDate($articlesFromDb['update_date']);
@@ -178,23 +163,15 @@ class ArticleManager extends DbConnexion
 
 
 
-// Fonction mettre à jour un article via la class Article
-    static function updateArticle(Article $article): Article
+    // Fonction mettre à jour un article via la class Article
+    public static function updateArticle(Article $article)
     {
-        // On se connecte à la base de donnée
-        $db = DbConnexion::openConnexion();
-
-        // On fait une mise à jour dans la table article sur le contenu, le titre, l'image, la ref_page, la date
-        $request = "UPDATE article SET content =' ". $article->getContent() ."', title =' ". $article->getTitle() ."', image =' ". $article->getImage() ."', ref_page =' ". $article->getRefPage() ."', update_date =' ". $article->getUpdateDate() ."' WHERE id =:id ";
-        $params= array("id"=>$_GET['id']);
-
-        // On prépare et exécute la requête
-        $stmt = $db->prepare($request);
-        $stmt->execute($params);
-
-        $db = DbConnexion::closeConnexion();
-
-        return $article;
+        $errors = [];
+        $error = ArticleManager::addImage($article, "update");
+        if($error){
+            array_push($errors, $error);
+        }
+        return $errors;
     }
 
 
@@ -203,8 +180,8 @@ class ArticleManager extends DbConnexion
 
 
 
-// Fonction supprimer un article via la class Article
-    static function deleteArticle(int $id) : void
+    // Fonction supprimer un article via la class Article
+    public static function deleteArticle(int $id) : void
     {
         // On se connecte à la base de donnée
         $db = DbConnexion::openConnexion();
@@ -218,9 +195,71 @@ class ArticleManager extends DbConnexion
         $stmt->execute($params);
 
         $db = DbConnexion::closeConnexion();
-
-           
     }
 
-}
 
+//                              |-------------------------- 7/ Fonction addImage ----------------------------|
+
+
+
+    public static function addImage($article, $action)
+    {
+        $db = DbConnexion::openConnexion();
+        
+        if (!empty($_FILES)) {
+            $image = $_FILES["image"]["name"];
+            $imageTmp = $_FILES["image"]["tmp_name"];
+            $imageSize = $_FILES["image"]["size"];
+            var_dump($image);
+            // On récupére tout après le .
+            $extention = explode(".", $image);
+            // Récupère l'extention et la met en minuscule
+            $newExtention = strtolower(end($extention));
+            // On met les extention autorisés dans un tableau
+            $tableau_ext = array("jpg", "png", "jpeg");
+    
+            if (in_array($newExtention, $tableau_ext)) {
+                // 500Mb
+                if ($imageSize < 1000000) {
+                    $imageDestination = "app/public/images/".$image;
+                    // Récupère l'image dans un dossier temporaire vers sa destination
+                    move_uploaded_file($imageTmp, $imageDestination);
+                    if($action === "create"){
+                        // On insére dans la table 'article' le titre, l'image, la date de création, la
+                        // date de mise à jour, le contenu, la ref-page
+                        $request = "INSERT INTO article (title, image, creation_date, update_date, content, ref_page) VALUES ";
+                        $request .= '( "'.$article->getTitle().'", "'.$image.'","'.$article->getCreationDate().'", "'.$article->getUpdateDate().'", "'.$article->getContent().'", "'.$article->getRefPage().'");';
+        
+                        // On prépare et exécute la requête
+                        $stmt = $db->prepare($request);
+                        $stmt->execute();
+        
+                        // On insére dans la variable $lastId l'identifiant de la dernière valeur
+                        $lastId = $db->lastInsertId();
+        
+                        $article->setId($lastId);
+                        $db = DbConnexion::closeConnexion();
+                        var_dump($article);
+                    }
+                    elseif($action === "update"){
+var_dump("pourquoi tu veux passss ??");
+                        // On fait une mise à jour dans la table article sur le contenu, le titre, l'image, la ref_page, la date
+                        $request = "UPDATE article SET content =' ". $article->getContent() ."', title =' ". $article->getTitle() ."', image ='". $image ."' , ref_page =' ". $article->getRefPage() ."', update_date =' ". $article->getUpdateDate() ."' WHERE id =:id ";
+                        $params= array("id"=>$_GET['id']);
+                        var_dump($image);
+                        // On prépare et exécute la requête
+                        $stmt = $db->prepare($request);
+                        $stmt->execute($params);
+                        $db = DbConnexion::closeConnexion();
+                        var_dump($image);
+                        var_dump($article);
+                    }
+                } else {
+                    return "Votre image est trop lourde";
+                }
+            } else {
+                return "Le format de votre image est incorrect ! jpg, png et jpeg uniquement !";
+            }
+        }
+    }
+}

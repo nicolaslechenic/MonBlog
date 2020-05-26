@@ -10,9 +10,6 @@
 
 Stéphanie Lemaitre, éléve Kercode alias @Slemaitre56
 
-### ETAT DU PROJET : 
-
-En cours..à suivre.
 
 ### DESCRIPTION : 
 
@@ -41,7 +38,8 @@ Sujet : Simple blog proposant :
 
 Usage classique et simple du blog.
 * Faire un git clone ou directement télècharger le dossier
-* La base de donnée est dans le dossier database.
+* La base de donnée est dans le dossier database.(app/data/base)
+* Penser a modifier le chemain de votre base de donnée dans app/models/DbConnexion.php
 * Vous pouvez acceder à la partie admin en faisant : base de url /admin
 * Une fois sur la page de connexion : admin / admin56
 * Vous pouvez créer, modifier, supprimer un article.

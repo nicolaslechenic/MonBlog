@@ -28,10 +28,13 @@ class AdminController
 
     public function edit()
     {
-        $title = "Administration - Editer un article ";
-        $description = "Sur cette page vous pouvez créer un noubelle article !";
-
-        require "app/views/backOffice/edit.php";
+        if (!empty($_SESSION['pseudo'])) {
+            $title = "Administration - Editer un article ";
+            $description = "Sur cette page vous pouvez créer un nouvelle article !";
+            require "app/views/backOffice/edit.php";
+        } else {
+            header("location: admin.php?action=connexion");
+        }
     }
 
 
@@ -129,12 +132,12 @@ class AdminController
 //                              |----------------------------- 7/ Fonction compteAdmin -----------------------------|
 
 
-public function logoutAdmin()
-{
-    \Projet\Models\AdminManager::logout();
-    header("Location: index.php?action=accueil");
- 
-}
+    public function logoutAdmin()
+    {
+        \Projet\Models\AdminManager::logout();
+        header("Location: index.php?action=accueil");
+    
+    }
       
     
     

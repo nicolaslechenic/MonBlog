@@ -6,14 +6,24 @@
 
 <!-- Appel des templates head et hearder -->
 <?php include './app/views/frontEnd/templates/head.php'; ?>
-<?php include './app/views/backOffice/templates/header.php'; ?>
+<?php include './app/views/backOffice/templates/header.php';?>
+
 
 <!-- MAIN -->
 <main class="container">
+      <div class="errorLogin">
+    <?php 
     
+    if(!empty($errors)){
+        foreach ($errors as $error) {
+        echo $error;
+    }
+    }
+    ?>
+    </div>  
     <h1 class="titreAdmin">Nouvel article</h1>
     <!-- Formulaire pour créer un nouvel article -->
-    <form class="formAdmin" action="admin.php?action=create" method="POST">
+    <form class="formAdmin" action="admin.php?action=create" method="POST" enctype="multipart/form-data" >
         <div class="blocTitrePost">
             <!-- Titre -->
             <input
@@ -26,7 +36,7 @@
             <div class="file">
                 <label for="file">
                     Insérer une image :</label>
-                <input type="file" accept="image/*" name="image" required="required">
+                <input type="file" name="image" required="required">
             </div>
         </div>
         <div class="messagePost">

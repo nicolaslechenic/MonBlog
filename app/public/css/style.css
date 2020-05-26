@@ -7,7 +7,7 @@
 * {
     margin: 0;
     padding: 0;
-
+    scroll-behavior: smooth;
 }
 body {
     width: 100%;
@@ -84,7 +84,6 @@ header {
 #slider-list img {
     width: 400px;
     height: 300px;
-
 }
 @keyframes slide {
     0% {
@@ -204,7 +203,6 @@ h4 {
 
 /*                              |------------------------------------- MAIN ---------------------------------------|                                  */
 .main {
-
     width: 60%;
     display: flex;
     flex-wrap: wrap;
@@ -627,7 +625,7 @@ td {
     font-weight: bold;
 
 }
-/*                              |------------------------------------- MODAL COOKIEE------------------------------------|                                */
+/*                              |------------------------------------- MODAL COOKIE------------------------------------|                                */
 .modal-cookie {
     position: fixed;
     top: 0;
@@ -738,19 +736,191 @@ td {
     top: 70px;
     color: #fb1140c2;
     font-size: 20px;
-font-weight: bold;
+    font-weight: bold;
 }
-.errorsEmail {
-    color: #fb1140c2;
+.errorLogin{
     position: absolute;
-    top: 110px;
-    font-size: 20px;
-font-weight: bold;
+    top: 120px;
+    font-size: 1.1rem;
+    color: #fb1140c2;
 }
-.errorsPW {
-    color: #fb1140c2;
+
+
+/*
+                                | -----------------------------------MEDIAQUERY------------------------------------ |
+                                |                                                                                   | 
+                                |-----------------------------------------------------------------------------------|
+*/
+@media screen and (max-width:576px) {
+    body {
+        max-width: 576px;
+    }
+    .logo {
+        display: none;
+    }
+    /*-----------menu burger------------*/
+    .menu-principal {
+        position: relative;
+        text-align: center;
+        margin-top: 1%;
+    }
+    .menu-principal ul {
+        display: none;
+    }
+    .menu-principal ul li {
+        margin: 10px auto;
+        width: 200px;
+    }
+    .menu-principal .menu-mobile {
+        display: block;
+    }
+    .menu-principal .menu-mobile img {
+        cursor: pointer;
+
+    }
+    #menu-mobile:checked,
+    .menu-principal #menu-mobile:not(checked) {
+        position: absolute;
+        left: 9999px;
+        opacity: 0;
+        transition-duration: opacity 5s;
+
+    }
+    .menu-principal [type="checkbox"]:checked + label + ul {
+        display: block;
+        opacity: 1;
+
+    }
+    /* ------------container-----------*/
+    .main {
+        width: 100%;
+    }
+    .intro {
+        width: 100%;
+    }
+    aside {
+        display: none;
+    }
+    /* -----------commentaire-----------*/
+    .zoneText {
+        width: 100%;
+        text-align: center;
+    }
+    .showCommentaire {
+        width: 100%;
+    }
+    .contenuCom {
+        width: 100%;
+        margin: 15px;
+    }
+    /*------------ footer------------ */
+    footer {
+        font-size: 0.7rem;
+    }
+    .soc-icons {
+        width: 25%;
+    }
+    /* ------------pages articles----------- */
+    .article {
+        min-width: 100%;
+    }
+    /* -------------contact------------- */
+    .containerTrois h1 {
+        margin: 50px 0;
+    }
+    .ssTitre {
+        width: 80%;
+    }
+    .infosPerso input {
+        width: 100%;
+        margin: 20px 0;
+    }
+    #message {
+        width: 100%;
+    }
+    .submitContact {
+        width: 40%;
+        height: 40px;
+    }
+    .labelContact {
+        width: 100%;
+    }
+    /* ---------------Creer--------------*/
+    .titrePost {
+        width: 100%;
+    }
+    .blocTitrePost {
+        margin: 0;
+    }
+    .file {
+        width: 100%;
+        margin: 50px 0;
+    }
+    .btnAdmin input {
+        width: 30%;
+    }
+    /* ---------------modifier--------------*/
+    .tableau {
+        width: 100%;
+    }
+    .tableau > table {
+        border: none;
+    }
+    tbody > tr, .hautTableau{
+        font-size: 1rem;
+    }
+    /* ---------------inscription/connexion--------------*/
+    .formInscrip{
+        width: 70%;
+    }
+    /* ---------------modal--------------*/
+    .modal{
+        width: 60%;
+    }
+}
+
+
+
+@media screen and (max-width:992px) {
+    /* -----------header------------- */
+    .menu-principal {
+        width: 80%;
+    }
+    .menu-mobile {
+        display: none;
+    }
+    /* ------------container------------ */
+    .intro {
+        width: 100%;
+    }
+    .intro h1 {
+        margin-bottom: 50px;
+    }
+    aside h4 {
+        margin-top: 50px;
+    }
+    /*------------ articles------------- */
+    .article {
+        width: 45%;
+    }
+    /* ---------------Creer--------------*/
+
+    .file > label {
+        font-size: 1rem;
+    }
+    
+    
+}
+/*
+                                | -------------------------------------PLUGIN-------------------------------------- |
+                                |                                                                                   | 
+                                |-----------------------------------------------------------------------------------|
+*/
+.cursor{
+    width: 3rem;
+    height: 3rem;
     position: absolute;
-    top: 150px;
-    font-size: 20px;
-font-weight: bold;
+    transform: translate(-100%, 0);
+    pointer-events: none;
+    z-index: 1;
 }

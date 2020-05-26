@@ -43,7 +43,7 @@ class Controller{
         
         $articleManager = new \Projet\Models\ArticleManager();
         $articlesList = $articleManager->readArticles($_REQUEST['action']);
-        
+        var_dump($articlesList);
         $commentManager = new \Projet\Models\CommentManager();
         $commentsList = $commentManager->readComments($_REQUEST['action']);
         

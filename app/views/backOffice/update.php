@@ -7,12 +7,19 @@
 <!-- Appel des templates head et hearder -->
 <?php include 'app/views/frontEnd/templates/head.php'; ?>
 <?php include 'app/views/backOffice/templates/header.php'; ?>
-
+<?php 
+    
+    if(!empty($errors)){
+        foreach ($errors as $error) {
+        echo $error;
+    }
+    }
+    ?>
 <!-- MAIN -->
 <div class="container">
     <h1 class="titreAdmin">Modifier article</h1>
       <!-- Formulaire pour modifier un article -->
-    <form class="formAdmin" action="admin.php?action=update&id=<?= $_GET["id"] ?>" method="post" accept-charset="utf-8">        
+    <form class="formAdmin" action="admin.php?action=update&id=<?= $_GET["id"] ?>" enctype="multipart/form-data" method="POST" accept-charset="utf-8">        
         <div class="blocTitrePost">
             <!-- Titre -->
             <input
@@ -26,11 +33,7 @@
             <div class="file">
                 <label for="file">
                     Insérer une image</label>
-                <input
-                    type="file"
-                    name="image"
-                    value="<?= $article->getImage(); ?>"
-                    required="required">
+                    <input type="file" name="image" required="required">
             </div>
         </div>
         <div class="messagePost">

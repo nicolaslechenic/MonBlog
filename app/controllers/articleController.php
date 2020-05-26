@@ -4,10 +4,9 @@ namespace Projet\Controllers;
 /*
                                 | -------------------------------ARTICLECONTROLLER--------------------------------- | 
                                 |                                                                                   |
-                                |                             1/ Fonction article                                   |
-                                |                             2/ Fonction createArticle                             |
-                                |                             3/ Fonction updateArticle                             |   
-                                |                             4/ Fonction deleteArticle                             | 
+                                |                             1/ Fonction createArticle                             |
+                                |                             2/ Fonction updateArticle                             |   
+                                |                             3/ Fonction deleteArticle                             | 
                                 |                                                                                   |                                                             
                                 |-----------------------------------------------------------------------------------|
 */
@@ -21,9 +20,19 @@ class ArticleController{
 
 
 function createArticle(){
-    $article = new \Projet\Models\Article($_REQUEST['title'],$_REQUEST['content'],$_REQUEST['image'],$_REQUEST['ref_page']);
-    \Projet\Models\ArticleManager::createArticle($article);
-    header('Location: /admin.php?action=ancien');
+    
+    $article = new \Projet\Models\Article($_REQUEST['title'],$_REQUEST['content'],$_FILES['image'],$_REQUEST['ref_page']);
+    
+    $objet = new \Projet\Models\ArticleManager();
+    $errors = $objet->createArticle($article);
+    if(empty($errors)){       
+        // header('Location: /admin.php?action=ancien');
+    }else{
+        $title = "Administration - Créer un article ";
+        $description = "Sur cette page vous pouvez créer un article !";
+        require "./app/views/backOffice/edit.php";
+    }
+    
 }
 
 
@@ -33,10 +42,17 @@ function createArticle(){
 
 
 function updateArticle(){
-    $article = new \Projet\Models\Article($_REQUEST['title'],$_REQUEST['content'],$_REQUEST['image'],$_REQUEST['ref_page']);
-    \Projet\Models\ArticleManager::updateArticle($article);
-    header('Location: /admin.php?action=ancien');
+    $article = new \Projet\Models\Article($_REQUEST['title'],$_REQUEST['content'],$_FILES['image'],$_REQUEST['ref_page']);
     
+    $objet = new \Projet\Models\ArticleManager();
+    $errors = $objet->updateArticle($article);
+    if(empty($errors)){       
+        // header('Location: /admin.php?action=ancien');
+    }else{
+        $title = "Administration - Créer un article ";
+        $description = "Sur cette page vous pouvez créer un article !";
+        require "./app/views/backOffice/update.php";
+    }
 }
 
 

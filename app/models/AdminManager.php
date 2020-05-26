@@ -47,7 +47,8 @@ class AdminManager extends DbConnexion
 
 
 
-    static function login($pseudo, $passwd){
+    static function login($pseudo, $passwd)
+    {
         $db = DbConnexion::openConnexion();
         if(isset($pseudo) && isset($passwd)){
             $login = $db->prepare('SELECT id, pseudo, password FROM admin WHERE pseudo =?');

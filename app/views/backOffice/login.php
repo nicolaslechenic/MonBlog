@@ -12,7 +12,7 @@
     <!-- Affiche les messages d'erreurs voir FormulaireManager-->
       
     <h1 class="titreInscrip">Connectez-vous</h1>
-    <div class="alert">
+    <div class="errorLogin">
     <?php 
     if(!empty($error)){
         echo $error;

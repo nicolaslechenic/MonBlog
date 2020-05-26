@@ -19,9 +19,6 @@
 
          <!--Feuilles de styles-->
          <link rel="stylesheet" href="./app/public/css/style.css">
-         <link rel="stylesheet" href="./app/public/css/plugin.css">
-         <link rel="stylesheet" href="./app/public/css/media.css">
-         <link rel="stylesheet" href="./app/public/css/connect.css">
          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
          <!-- Favicon -->

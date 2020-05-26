@@ -40,12 +40,12 @@ class Comment{
  public = visiblité totale des éléments
 */ 
 
-    public function __construct($userPseudo, $content)
+    public function __construct($userPseudo, $content, $articleId)
     {
 
         $this->setUserPseudo($userPseudo);
         $this->setContent($content);
-        
+        $this->setArticleId($articleId);
 
         $now = date_create();
 
