@@ -11,9 +11,9 @@
 
 <!-- MAIN -->
 <main class="container">
-      <div class="errorLogin">
+    <!-- ERRORS -->
+    <div class="errorEditer">
     <?php 
-    
     if(!empty($errors)){
         foreach ($errors as $error) {
         echo $error;

@@ -94,19 +94,34 @@ class ArticleManager extends DbConnexion
         // On le stoocke dans un tableau
         $articlesList = [];
 
-        $request = "SELECT * FROM article WHERE id=:id";
+        $request = "SELECT * FROM article LEFT JOIN commentaire ON article.id = commentaire.article_id  WHERE article.id =:id";
+        
 
         // On prépare et exécute la requête
         $stmt = $db->prepare($request);
+        
         $params= array("id"=>$_GET['id']);
+        
         $stmt->execute($params);
+
         $articleFromDb = $stmt->fetch();
+        
         // On instancie un nouvel article
         $article = new Article($articleFromDb['title'], $articleFromDb['content'], $articleFromDb['image'], $articleFromDb['ref_page']);
         $article->setId($articleFromDb['id']);
         $article->setCreationDate($articleFromDb['creation_date']);
         $article->setUpdateDate($articleFromDb['update_date']);
-
+        var_dump($articleFromDb );
+        die();
+        // foreach ( $articleFromDb as $message => $comment) {
+        //          // On instancie Commentaire
+        //         $comment = new Comment($commentsFromDb['user_pseudo'],$commentsFromDb['content'],$commentsFromDb['article_id']);
+        //         $comment->setId($commentsFromDb['id']);
+        //         $comment->setCreationDate($commentsFromDb['creation_date']);
+        //         $comment->setUpdateDate($commentsFromDb['update_date']);
+        
+        //          $commentsList [] = $comment;
+        //         }
         $articlesList [] = $article;
         
         $db = DbConnexion::closeConnexion();
@@ -181,7 +196,7 @@ class ArticleManager extends DbConnexion
 
 
     // Fonction supprimer un article via la class Article
-    public static function deleteArticle(int $id) : void
+    public static function deleteArticle(int $id)
     {
         // On se connecte à la base de donnée
         $db = DbConnexion::openConnexion();
@@ -195,6 +210,7 @@ class ArticleManager extends DbConnexion
         $stmt->execute($params);
 
         $db = DbConnexion::closeConnexion();
+        
     }
 
 
@@ -210,7 +226,6 @@ class ArticleManager extends DbConnexion
             $image = $_FILES["image"]["name"];
             $imageTmp = $_FILES["image"]["tmp_name"];
             $imageSize = $_FILES["image"]["size"];
-            var_dump($image);
             // On récupére tout après le .
             $extention = explode(".", $image);
             // Récupère l'extention et la met en minuscule
@@ -239,23 +254,19 @@ class ArticleManager extends DbConnexion
         
                         $article->setId($lastId);
                         $db = DbConnexion::closeConnexion();
-                        var_dump($article);
+                        
                     }
                     elseif($action === "update"){
-var_dump("pourquoi tu veux passss ??");
                         // On fait une mise à jour dans la table article sur le contenu, le titre, l'image, la ref_page, la date
-                        $request = "UPDATE article SET content =' ". $article->getContent() ."', title =' ". $article->getTitle() ."', image ='". $image ."' , ref_page =' ". $article->getRefPage() ."', update_date =' ". $article->getUpdateDate() ."' WHERE id =:id ";
-                        $params= array("id"=>$_GET['id']);
-                        var_dump($image);
+                        $request = "UPDATE article SET content ='".$article->getContent()."', title ='".$article->getTitle()."', image ='".$image ."',ref_page ='".$article->getRefPage()."', update_date ='".$article->getUpdateDate()."' WHERE id =:id ";
+                        $params= array("id"=>$_GET['id']);                      
                         // On prépare et exécute la requête
                         $stmt = $db->prepare($request);
                         $stmt->execute($params);
-                        $db = DbConnexion::closeConnexion();
-                        var_dump($image);
-                        var_dump($article);
+                        $db = DbConnexion::closeConnexion();                     
                     }
                 } else {
-                    return "Votre image est trop lourde";
+                    return "Votre image est trop lourde ! 1Mo max !";
                 }
             } else {
                 return "Le format de votre image est incorrect ! jpg, png et jpeg uniquement !";

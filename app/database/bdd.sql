@@ -41,9 +41,9 @@ CREATE TABLE IF NOT EXISTS `article` (
   `creation_date` date NOT NULL,
   `update_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8;
 
--- Listage des données de la table monblog.article : ~8 rows (environ)
+-- Listage des données de la table monblog.article : ~11 rows (environ)
 /*!40000 ALTER TABLE `article` DISABLE KEYS */;
 INSERT INTO `article` (`id`, `ref_page`, `title`, `image`, `content`, `creation_date`, `update_date`) VALUES
 	(9, 'Australie', 'Le départ et l\'arrivée', 'australie1.jpg', 'On a beau savoir où on va, comment on n\'y va et combien de temps ça prendra, on n\'est jamais vraiment préparé !\r\nD\'un on a TOUS tendance à prendre trop ! Le \'au cas ou\' qui prend 14kilos dans votre valise ! Genre, c\'est bien connu, des pharmacies y en a qu\'en France !\r\nOn se prend le gros gel douche, le gros shampoo pour ne pas manquer alors qu\'il est tellement plus logique d\'en racheter direct là-bas car oui y a aussi des super-marchés ! Le truc de dingue !\r\n\r\nPour aller en Australie, à Perth, si on veut être précis, on a un peu de route !\r\nDéjà 3h30 de train pour aller à Paris, puis 2h d\'avion pour aller à Londres et après 4h d\'escale à baver devant un cookie à 4euros et on décolle enfin pour ...17h de vol. Le vol de plus long et sans escale.\r\n\r\nOui, c\'est très long et à la limite du supportable surtout quand on n\'arrive pas à dormir assis. Impossible de s\'allonger ni de tendre ses jambes.... Pas conseillé d\'être en surpoids sauf si vous avez les moyens de vous payer une classe supérieure !\r\nOn a beau avoir pris un livre, une console de jeux portable, son MP4, on n\'a envie de rien d\'autre que de courir et sauter pour se dégourdir les jambes et la tête !\r\nAlors quand on voit les côtes Australiennes.... ahhh que du bonheur !\r\n\r\nOn sort enfin de l\'aéroport, il est 11h à Perth, et je n\'ai pas dormi depuis plus de 22h ! ET pourtant pas fatiguée, tellement heureuse d\'être là !', '2020-04-07', '2020-04-07'),
@@ -53,7 +53,10 @@ INSERT INTO `article` (`id`, `ref_page`, `title`, `image`, `content`, `creation_
 	(13, 'Nouvelle-zelande', 'Moitié du voyage', 'n.z1.jpg', 'Quand on a pris l\'avion, un petit coucou, pour aller direction la Nouvelle-Zélande, on a versé notre petit larme.\r\nQuitter l\'Australie avec la sensation de ne rien avoir vu était un crève cœur et pourtant on n\'a pas eu un instant de farniente ! \r\nJ\'ai adoré l\'Australie mais en arrivant en Nouvelle-Zélande, je suis tombée à genoux ! \r\nAtterrir entre deux chaînes de montagne enneigées... magique.\r\nArrivée avec 22 degrés et un soleil de dingue ! J\'ai retrouvé le sourire !\r\n\r\nPetit soucis au moment de récupérer notre voiture de location. Notre voiture est parti avec un autre client...ah bon ? bah surclassé alors ! ;D\r\n\r\nToute l\'île du sud de la Nouvelle-Zélande est quasi occupée que des prairies pour les moutons ! Y\'en a partout sur une surface verdoyante impressionnante !\r\n\r\nOn ne s\'est jamais lassé un seul instant du paysage ! Et nous avons eu plein de surprises ! Surtout avec la météo !\r\n\r\n\r\n\r\n', '2020-04-07', '2020-04-07'),
 	(14, 'Nouvelle-zelande', 'Aéroport', 'n.z04.jpg', 'Fan de seigneurs des anneaux ?\r\n\r\nAlors la Nouvelle-Zélande est faite pour vous !\r\n\r\nDans certains aéroport, vous serez accueillis par des aigles géants chevauchés par Gandalf ou bien la tête du dragon Smaug.\r\n\r\nSi vous êtes vraiment intéressé, pensez a bien vous renseigner et vous équiper car grimper la montagne du destin est un vrai challenge !\r\n\r\nÉvitez les trucs trop touristique, encore une fois, vous allez être aussi déçu que nous. Le film a déjà quelques années et certains lieux sont vieux et ont perdu tout intérêt et vous allez payer cher !\r\n\r\nMon barbu avait des petites étoiles dans les yeux...en sortant du studio Weta où a été tourné les films, c\'était des larmes ! \r\n5 pièces remplis d\'objets de décor, certains n\'ont aucun rapport avec les films, style la voiture le Halo... Ou encore des épées qui n\'ont jamais été utilisées dans les films. A oui et aucune visite ne français donc si vous n’êtes pas à l\'aise avec l\'anglais vous ne comprendrez rien ! Ils parlent super vite !\r\n\r\nLe magasin : petit et hyper cher et la moitié des articles en rupture de stock !\r\n\r\nVous voulez vraiment voir du seigneurs des anneaux ? Faites Hobbits-town !', '2020-04-07', '2020-04-07'),
 	(16, 'Trucs_et_astuces', 'Permis', 'trucs02.jpg', 'Deux trois choses à savoir !\r\n1/ Ils conduisent à gauche.\r\n2/ Leurs signalétiques différent du notre ( pas tout heureusement !)\r\n3/ Quasi toutes les voitures que vous louerez sont automatiques !\r\n4/ c\'est pas du d\'avoir un permis provisoire !\r\n\r\nRenseignez-vous, regardez une ou deux vidéos sur le code de conduite et pourquoi ne pas aller chez un concessionnaire pour tester une voiture auto pour se rassurer ?', '2020-04-07', '2020-04-07'),
-	(19, 'Australie', 'qsdfghj', 'IMG_5555.JPG', 'xcvbn', '2020-05-18', '2020-05-18');
+	(75, 'Trucs_et_astuces', 'Vos valises', 'trucs.jpg', 'En gros, ne voyez pas trop gros! Vous ne partez pas dans un pays primitif ! Eux aussi ont du dentifrice ou du gel douche !\r\nSincèrement, remplissez juste à moitié votre valise car on est vite envahi de souvenirs a ramener pour la sœur et les 30 petits neveux et nièces !\r\n\r\nAu pire, mettez un petit valise dans une grand valise, une truc qui peut s’écraser facilement !', '2020-05-28', '2020-05-28'),
+	(76, 'Australie', 'Le zoo de Sidney', 'slide2.1.jpg', 'Deux mot : à faire !\r\nUn peu cher, oui c\'est vrai... mais rien que pour y aller c\'est déjà une aventure ! Prendre le ferry puis une navette jusqu\'en haut ! \r\nSuper zoo avec une vue dingue sur Sidney !', '2020-05-28', '2020-05-28'),
+	(77, 'Australie', 'Les routes', 'AUS_115_IMG_9797-compressor(1).jpg', 'La grande majorité de la population se trouve sur les côtes. Alors le reste du pays est assez désertique comme son paysage !M^me si chercher des kangourous et des koalas c\'est amusant, cela fini par lasser une peu ^^', '2020-05-28', '2020-05-28'),
+	(78, 'Australie', 'Sydney', 'australie16-compressor(1).jpg', 'Déééçuuueeeee !!!! Autant, le séjour dans le quartier gay était très marrant autant la météo et l\'opéra décevant! \r\nd\'un il faut encore payer et de deux bah en fois devant...bah bof quoi', '2020-05-28', '2020-05-28');
 /*!40000 ALTER TABLE `article` ENABLE KEYS */;
 
 -- Listage de la structure de la table monblog. commentaire
@@ -61,16 +64,18 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `user_pseudo` varchar(255) NOT NULL,
   `article_id` int(11) NOT NULL,
-  `content` text NOT NULL,
+  `message` text NOT NULL,
   `creation_date` date NOT NULL,
   `update_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_commentaire_article` (`article_id`),
   CONSTRAINT `FK_commentaire_article` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Listage des données de la table monblog.commentaire : ~0 rows (environ)
+-- Listage des données de la table monblog.commentaire : ~1 rows (environ)
 /*!40000 ALTER TABLE `commentaire` DISABLE KEYS */;
+INSERT INTO `commentaire` (`id`, `user_pseudo`, `article_id`, `message`, `creation_date`, `update_date`) VALUES
+	(3, 'Poupi', 9, 'Bonjour', '2020-05-19', '2020-05-19');
 /*!40000 ALTER TABLE `commentaire` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

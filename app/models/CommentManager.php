@@ -53,40 +53,40 @@ class CommentManager extends DbConnexion
 
 
 // Fonction afficher un/des commentaire/s par rapport à la page(article_id)
-    function readComments(): array
-    {
-        // On se connecte à la base de donnée
-        $db = DbConnexion::openConnexion();
+    // function readComments(): array
+    // {
+    //     // On se connecte à la base de donnée
+    //     $db = DbConnexion::openConnexion();
 
-        // Après avoir tout sélectionné selectionné dans la table commentaire
-        // On le stoocke dans un tableau
-        $commentsList = [];
+    //     // Après avoir tout sélectionné selectionné dans la table commentaire
+    //     // On le stoocke dans un tableau
+    //     $commentsList = [];
 
-        $request = "SELECT * FROM commentaire WHERE article_id ";
+    //     $request = "SELECT * FROM article WHERE id =:id INNER JOIN commentaire on article.id = commentaire.article_id";
+    //     $params= array("id"=>$_GET['id']);
+    //     // On prépare et exécute la requête
+    //     $stmt = $db->prepare($request);
+    //     $stmt->execute($params);
 
-        // On prépare et exécute la requête
-        $stmt = $db->prepare($request);
-        $stmt->execute();
+    //     /*
+    //     FETCH-ASSOC = mode de récupération de données qui retourne un tableau indéxé par colonne 
+    //     Ne permet pas d'appeler plusieurs colonnes du même nom
+    //     */
 
-        /*
-        FETCH-ASSOC = mode de récupération de données qui retourne un tableau indéxé par colonne 
-        Ne permet pas d'appeler plusieurs colonnes du même nom
-        */
+    //     while ($commentsFromDb = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+    //         // On instancie Commentaire
+    //         $comment = new Comment($commentsFromDb['user_pseudo'],$commentsFromDb['content'],$commentsFromDb['article_id']);
+    //         $comment->setId($commentsFromDb['id']);
+    //         $comment->setCreationDate($commentsFromDb['creation_date']);
+    //         $comment->setUpdateDate($commentsFromDb['update_date']);
 
-        while ($commentsFromDb = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            // On instancie Commentaire
-            $comment = new Comment($commentsFromDb['user_pseudo'],$commentsFromDb['content'],$commentsFromDb['article_id']);
-            $comment->setId($commentsFromDb['id']);
-            $comment->setCreationDate($commentsFromDb['creation_date']);
-            $comment->setUpdateDate($commentsFromDb['update_date']);
+    //         $commentsList [] = $comment;
+    //     }
 
-            $commentsList [] = $comment;
-        }
+    //     $db = DbConnexion::closeConnexion();
 
-        $db = DbConnexion::closeConnexion();
-
-        return $commentsList;
-    }
+    //     return $commentsList;
+    // }
 
 
 

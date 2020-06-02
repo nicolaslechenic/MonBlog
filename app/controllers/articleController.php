@@ -26,7 +26,7 @@ function createArticle(){
     $objet = new \Projet\Models\ArticleManager();
     $errors = $objet->createArticle($article);
     if(empty($errors)){       
-        // header('Location: /admin.php?action=ancien');
+        header('Location: /admin.php?action=ancien');
     }else{
         $title = "Administration - Créer un article ";
         $description = "Sur cette page vous pouvez créer un article !";
@@ -47,7 +47,7 @@ function updateArticle(){
     $objet = new \Projet\Models\ArticleManager();
     $errors = $objet->updateArticle($article);
     if(empty($errors)){       
-        // header('Location: /admin.php?action=ancien');
+        header('Location: /admin.php?action=ancien');
     }else{
         $title = "Administration - Créer un article ";
         $description = "Sur cette page vous pouvez créer un article !";

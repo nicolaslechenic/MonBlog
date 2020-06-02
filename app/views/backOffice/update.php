@@ -7,14 +7,17 @@
 <!-- Appel des templates head et hearder -->
 <?php include 'app/views/frontEnd/templates/head.php'; ?>
 <?php include 'app/views/backOffice/templates/header.php'; ?>
-<?php 
-    
+<!-- ERRORS -->
+<div class="errorEditer">
+    <?php   
     if(!empty($errors)){
-        foreach ($errors as $error) {
+        foreach ($errors as $error) 
+        {
         echo $error;
-    }
+        }
     }
     ?>
+</div>
 <!-- MAIN -->
 <div class="container">
     <h1 class="titreAdmin">Modifier article</h1>
@@ -44,7 +47,7 @@
                     if(isset($_REQUEST['action']) ) : 
                 ?>
                 <select name="ref_page" id="refPage" required="required">
-                    <option value="<?= $article->getRefPage(); ?>"><?= $article->getRefPage(); ?></option>
+                    <option value="<?= $article->getRefPage() ?>"><?= $article->getRefPage() ?></option>
                     <option value="Australie">Australie</option>
                     <option value="Nouvelle-zelande">Nouvelle-Zélande</option>
                     <option value="Trucs_et_astuces">Trucs et Astuces</option>

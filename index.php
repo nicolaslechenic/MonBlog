@@ -62,10 +62,9 @@ require_once __DIR__. "/vendor/autoload.php";
             $controller->cgu();
         }elseif($_GET["action"] == "cookie"){
             $controller->cookie();
-        
-    }elseif($_GET["action"] == "newComment"){
+        }elseif($_GET["action"] == "newComment"){
         $controllerComment->newComment();
-    }
+        }
     }else{
         $controller->accueil();
         
@@ -79,6 +78,8 @@ require_once __DIR__. "/vendor/autoload.php";
 
 // catch = bloc qui gére les exception quand celle-ci est levée
     } catch (Exception $e) {
+        var_dump($e);
+        die();
         $title = "Page 404 ";
         $description = "Aucune adresse tourvée !";
         require "app/views/frontEnd/404.php";

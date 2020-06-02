@@ -43,9 +43,8 @@ class Controller{
         
         $articleManager = new \Projet\Models\ArticleManager();
         $articlesList = $articleManager->readArticles($_REQUEST['action']);
-        var_dump($articlesList);
-        $commentManager = new \Projet\Models\CommentManager();
-        $commentsList = $commentManager->readComments($_REQUEST['action']);
+        // $commentManager = new \Projet\Models\CommentManager();
+        // $commentsList = $commentManager->readComments($_REQUEST['action']);
         
         require "./app/views/frontEnd/pages/australie.php";
         
@@ -64,8 +63,8 @@ class Controller{
         $articleManager = new \Projet\Models\ArticleManager();
         $articlesList = $articleManager->readArticles($_REQUEST['action']);
 
-        $commentManager = new \Projet\Models\CommentManager();
-        $commentsList = $commentManager->readComments($_REQUEST['action']);
+        // $commentManager = new \Projet\Models\CommentManager();
+        // $commentsList = $commentManager->readComments($_REQUEST['action']);
 
         require "./app/views/frontEnd/pages/n-Zelande.php";
         
@@ -84,8 +83,8 @@ class Controller{
         $articleManager = new \Projet\Models\ArticleManager();
         $articlesList = $articleManager->readArticles($_REQUEST['action']);
 
-        $commentManager = new \Projet\Models\CommentManager();
-        $commentsList = $commentManager->readComments($_REQUEST['action']);
+        // $commentManager = new \Projet\Models\CommentManager();
+        // $commentsList = $commentManager->readComments($_REQUEST['action']);
 
         require "./app/views/frontEnd/pages/trucs.php";
         
@@ -117,9 +116,8 @@ class Controller{
 
         $articleManager = new \Projet\Models\ArticleManager();
         $article = $articleManager->readOneArticle();
-
-        $commentManager = new \Projet\Models\CommentManager();
-        $commentsList = $commentManager->readComments($_REQUEST['action']);
+        // $commentManager = new \Projet\Models\CommentManager();
+        // $commentsList = $commentManager->readComments($_REQUEST['action']);
 
         require "./app/views/frontEnd/pages/article.php";
         
